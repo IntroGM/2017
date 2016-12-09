@@ -1,3 +1,4 @@
+![Bolivia, eroding](img/LK0042-cropped.gif)
 This website briefly describes the contents of the Introduction to Lithospheric Geodynamic Modelling course at the University of Helsinki.
 
 # Course goals
