@@ -27,4 +27,4 @@ It is not required, but you will also benefit from having some knowledge of prog
 In the event you are not confident you qualify to take this course, please contact the course instructors directly via email.
 In addition, you may benefit from studying the following web resources:
 
-- 
+- ![Interactive Python tutorial](https://www.learnpython.org/)
