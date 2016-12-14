@@ -1,6 +1,6 @@
 ![Bolivia, eroding](img/LK0042-cropped.gif)
 
-Helsinki University Geodynamics Group organizes a one-week short course "Introduction to lithospheric geodynamic modelling" for master's/PhD students and interested researchers.
+![Helsinki University Geodynamics Group](http://wiki.helsinki.fi/display/HUGG) organizes a one-week short course "Introduction to lithospheric geodynamic modelling" for master's/PhD students and interested researchers.
 
 # Course goals
 
