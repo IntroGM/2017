@@ -28,3 +28,10 @@ In the event you are not confident you qualify to take this course, please conta
 In addition, you may benefit from studying the following web resources:
 
 - ![Interactive Python tutorial](https://www.learnpython.org/)
+
+# Instructors
+
+ - David Whipp
+ - Lars Kaislaniemi
+ 
+ E-Mail: *firstname*.*lastname*@helsinki.fi
