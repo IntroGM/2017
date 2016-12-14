@@ -32,8 +32,9 @@ In addition, you may benefit from studying the following web resources:
 
 # Time and location
 
-Time: 9th to 13th Jan 2017, 9-16
-Location: University of Helsinki Kumpula Campus (Gustaf Hällströmin katu 2, Physicum building, room D211)
+**Time**: 9th to 13th Jan 2017, 9-16
+
+**Location**: University of Helsinki Kumpula Campus (Gustaf Hällströmin katu 2, Physicum building, room D211)
 
 # Instructors, sign-up
 
