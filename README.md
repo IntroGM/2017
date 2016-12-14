@@ -1,5 +1,6 @@
 ![Bolivia, eroding](img/LK0042-cropped.gif)
-This website briefly describes the contents of the Introduction to Lithospheric Geodynamic Modelling course at the University of Helsinki.
+
+Helsinki University Geodynamics Group organizes a one-week short course "Introduction to lithospheric geodynamic modelling" for master's/PhD students and interested researchers.
 
 # Course goals
 
@@ -15,11 +16,11 @@ At the end of this course, students should be able to:
 - Create their own simple 2D numerical geodynamic model including heat transfer and viscous flow
 
 # Suggested background studies
-Students taking this course are should have taken past courses that provide
+Students taking this course should have
 
 - Basic knowledge of geodynamic processes in the lithosphere (stress and strain, elasticity, viscous flow, plasticity, heat transfer, etc.)
-- Familiarity with basic computer programming concepts (loops, logical operators, conditional statements, etc.)
-- General understanding of calculus (derivatives, integrals, discretization, etc.)
+- Familiarity with basic computer programming concepts (loops, conditional statements, etc.)
+- General understanding of calculus (derivatives, integrals, etc.)
 
 It is not required, but you will also benefit from having some knowledge of programming in Python.
 
@@ -29,9 +30,16 @@ In addition, you may benefit from studying the following web resources:
 
 - ![Interactive Python tutorial](https://www.learnpython.org/)
 
-# Instructors
+# Time and location
+
+Time: 9th to 13th Jan 2017, 9-16
+Location: University of Helsinki Kumpula Campus (Gustaf Hällströmin katu 2, Physicum building, room D211)
+
+# Instructors, sign-up
 
  - David Whipp
  - Lars Kaislaniemi
  
  E-Mail: *firstname*.*lastname*@helsinki.fi
+ 
+ You can sign-up either via Weboodi (Helsinki University students, 3 credit points) or via e-mail to Lars Kaislaniemi.
