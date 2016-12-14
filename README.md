@@ -1,6 +1,6 @@
 ![Bolivia, eroding](img/LK0042-cropped.gif)
 
-![Helsinki University Geodynamics Group](http://wiki.helsinki.fi/display/HUGG) organizes a one-week short course "Introduction to lithospheric geodynamic modelling" for master's/PhD students and interested researchers.
+[Helsinki University Geodynamics Group](http://wiki.helsinki.fi/display/HUGG) organizes a one-week short course "Introduction to lithospheric geodynamic modelling" for master's/PhD students and interested researchers.
 
 # Course goals
 
@@ -28,7 +28,7 @@ It is not required, but you will also benefit from having some knowledge of prog
 In the event you are not confident you qualify to take this course, please contact the course instructors directly via email.
 In addition, you may benefit from studying the following web resources:
 
-- ![Interactive Python tutorial](https://www.learnpython.org/)
+- [Interactive Python tutorial](https://www.learnpython.org/)
 
 # Time and location
 
