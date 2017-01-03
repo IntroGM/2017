@@ -1,4 +1,4 @@
-![Bolivia, eroding](img/LK0042-cropped.gif)
+![Bolivia, eroding in 3D](img/LK0042-cropped.gif)
 
 The [Helsinki University Geodynamics Group](http://wiki.helsinki.fi/display/HUGG) is offering a one-week short course titled "Introduction to lithospheric geodynamic modelling" for master's/PhD students and interested researchers.
 
