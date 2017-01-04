@@ -90,13 +90,13 @@
 ## Tentative schedule
 - Day 1 AM
     - Course overview & key physical processes/concepts (Dave)
+    - Solving equations (Dave)
 - Day 1 PM
     - Python/computing essentials (Dave)
 - Day 2 AM
-    - Solving equations (Dave)
     - Finite differences I (Lars)
-- Day 2 PM
     - Code review of Stokes ball example (Lars)
+- Day 2 PM
     - Heat conduction with production in 1D (Lars)
 - Day 3 AM
     - Testing your code/benchmarking (Dave)
