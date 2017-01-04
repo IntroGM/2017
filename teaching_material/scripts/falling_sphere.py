@@ -31,11 +31,11 @@ g = 9.81       # acceleration of gravity (m s^-2)
 
 # Initialize an array to hold the results (sphere elevation)
 # The first values is the initial elevation, rest are calculated
-z = np.zeros(nt+1)
+z = np.zeros(nt)
 z[0] = z_ini
 
 # generate array of times in seconds
-time = np.zeros(nt+1)
+time = np.zeros(nt)
 time[0] = 0
 
 # calculate sphere volume
@@ -50,28 +50,26 @@ m = V*rho_s
 # calculate gravitational force
 Fg = -m*g
 
+# to shorten the expressions
 A = -6 * pi * eta * R
 
 # Loop over every time step, always calculating the new elevation
 # based on the two previous elevation values. 
 # Skip the first value which is directly given by the initial condition.
-for it in range(0, nt):
-	if it == 0:
+for it in range(1, nt):
+	if it == 1:
 		# z_{-1} is replaced by z_{1} in the discretized 
 		# equation since we don't know value for z_{-1}
-
-		z[it+1] = FIX THIS
-
+		# This is the zero velocity boundary (initial) condition
+		z[it] = 
 	else:
 		# At timesteps it>1 we do know two previous values,
-		# z[it] and z[it-1] so we use the normal discretized equation
+		# z[it-1] and z[it-2] so we use the normal discretized equation
 		# to calculate the next value z[it+1]
-
-		z[it+1] = FIX THIS
-
+		z[it] = 
 
 	# Calculate the time in seconds at this timestep
-	time[it+1] = time[it] + dt
+	time[it] = time[it-1] + dt
 
 
 
@@ -85,7 +83,7 @@ for it in range(0, nt):
 # Initialize arrays to hold the time values
 # for the analytical solution. We calculate the analytical
 # solution at 200 points for plotting.
-t_analytical = np.linspace(0, nt*dt, 200)
+t_analytical = np.linspace(0, (nt-1)*dt, 200)
 
 # Coefficients of the differential equation
 B1 = 6*pi*eta*R/m

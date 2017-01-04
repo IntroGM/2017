@@ -12,7 +12,7 @@ Introduction to lithospheric geodynamic modelling
    :maxdepth: 2
    :caption: Contents:
 
-   finite_differences
+   finite_differences_1
 
 
 
