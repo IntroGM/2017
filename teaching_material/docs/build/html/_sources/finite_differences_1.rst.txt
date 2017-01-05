@@ -391,16 +391,13 @@ Here we needed two (second order in one dimension, time).
 .. figure:: img/stencil_stokesball.svg
 
    *Stencil* of the finite differences approximation for the problem
-   of a ball falling within a fluid. In order to calculate :math:`z`
-   at :math:`i+1` we need to know :math:`z` at :math:`i` and at 
-   :math:`i-1`.
+   of a ball falling within a fluid. In order to calculate :math:`i+1`
+   we need to know :math:`i` and :math:`i-1`.
 
 .. figure:: img/stencil_stokesball_boundary.svg
 
    Stencil of the finite differences approximation illustrating
-   the boundary (initial) condition requirement; :math:`z` at 
-   :math:`i=1` cannot be calculated using the basic discretized
-   version of the equation: one needs special *boundary condition*.
+   the boundary (initial) condition requirement.
 
 .. topic:: Exercise
 

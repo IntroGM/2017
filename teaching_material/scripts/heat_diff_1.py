@@ -7,7 +7,7 @@ from scipy.special import erf
 ### heat_diff_1.py
 ###
 ### Script to calculate the finite differences
-### solution for the 1D heat diffusion & production
+### solution for the 1D heat diffusion
 ### problem.
 ###
 ### Compared against analytical solution.

@@ -1,62 +1,55 @@
 .. Finite differences method section
 
-Finite differences method I
-===========================
-
-The method of finite differences is used, as the name suggests, to transform 
-*infinitesimally small* differences of variables in differential equations to 
-small but *finite* differences, thus enabling solution of these equations
-by means of numerical calculations in a computer.
-
-The starting point for the finite differences method is the definition of 
-a derivative:
-
-.. math::
-
-   \frac{\mathrm{d}f}{\mathrm{d}x}\rvert_{x=x_0} = \lim_{\Delta x \rightarrow 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} .
-
-However, computers can only handle numbers of finite value, not infinitesimally
-small values such as :math:`\Delta x` at the limit used in the definition. Thus,
-the derivative is approximated by dropping out the limit:
-
-.. math::
-   \frac{\mathrm{d}f}{\mathrm{d}x}\rvert_{x=x_0} \approx \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} .
-   :label: fd_deriv_approx_fwd
-   
-where :math:`\Delta x` is *sufficiently small*. If we could choose arbitrary 
-small values of :math:`\Delta x`, we would reach the exact value of the
-derivative, but in reality we are always limited by the numerical accuracy
-of the computers. [#fd_taylor]_
-
-Approximation :eq:`fd_deriv_approx_fwd` is called a *forward difference*. Its
-counter-part, the *backward difference* approximation is defined similarly:
-
-.. math::
-   \frac{\mathrm{d}f}{\mathrm{d}x}\rvert_{x=x_0} \approx \frac{ f(x_0) - f(x_0 - \Delta x)}{\Delta x} .
-   :label: fd_deriv_approx_bwd
-
-Finally, one can define so called *central difference* approximation:
-
-.. math::
-   \frac{\mathrm{d}f}{\mathrm{d}x}\rvert_{x=x_0} \approx \frac{ f(x_0 + 0.5\Delta x) - f(x_0 - 0.5\Delta x)}{\Delta x} = \frac{ f(x_½) - f(x_{-½})}{x_½ - x_{-½}}
-   :label: fd_deriv_approx_cnt
-
-where :math:`x_½ - x_{-½} = \Delta x`. 
-
-
-.. _fig-fd-sketches-1:
-.. figure:: img/FD_sketches_1.png
-
-   Illustration of finite differences approximation (forward difference).
-   As :math:`x_1` approaches :math:`x_0` the approximated gradient (red)
-   approaches the exact gradient of the function :math:`f_0` at 
-   :math:`x=x_0`.
-
+Heat conduction and production
+==============================
 
 .. topic:: Exercise
 
-   Sketch a visualization of backward and central differences like the forward 
-   differences is visualized in Fig :numref:`fig-fd-sketches-1`.
+   Transform the following differential equation in to 
+   its discretized form.
+
+   Use *forward difference* approximation in time, 
+   and central difference approximation in space.
+
+   .. math::
+      \rho C_p \frac{\delta T}{\delta t} = \alpha \frac{\delta^2 T}{\delta x^2}
+
+.. topic:: Exercise
+
+   Implement your discretization in :code:`heat_diff_1.py` (l. 57).
+
+   Note that whereas in the falling sphere example the variable was
+   time only, here both time and location vary. Thus, the temperature
+   array in the python code is 2-dimensional: You can refer to the 
+   grid point *k* time step *i* by using expression :code:`T[k,i]`.
+
+
+Spatially varying physical parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. topic:: Exercise
+
+   Transform the following differential equation in to 
+   its discretized form.
+
+   Use *forward difference* approximation in time, 
+   and *central difference* approximation in space.
+
+   .. math::
+      \rho(x) C_p(x) \frac{\delta T}{\delta t} = \frac{ \alpha(x) \frac{\delta T}{\delta x} }{\delta x} + H(x)
+
+.. figure:: img/stencil_heatdiff_staggered.svg
+
+   A *staggered grid* for the solution of the heat diffusion problem,
+   with four time steps and four spatial grid points.
+
+   Circles mark the grid points that are used to define temperature,
+   density, heat capacity, and heat production. Red circles: initial
+   conditions, blue circles: boundary conditions. Crosses mark the
+   grid points used to define heat conductivity. 
+
+   The last row of heat conductivity values (i = 4) are *ghost points*
+   and not used in the solution. 
 
 
 Equation :eq:`fd_deriv_approx_cnt` can be generalized as 
@@ -267,13 +260,6 @@ where :math:`z` is the position (height) of the sphere, and :math:`t` time. This
 differential equation has an analytical solution [#fd_stokes_analytical]_, but we
 will use finite differences method to solve the equation.
 
-.. _fig-stokes-ball:
-.. figure:: img/stokesball.png
-
-   The fall of the sphere within a viscous fluid is driven by the gravity
-   (:math:`F_g`) and resisted by the buoyancy (:math:`F_b`) and frictional
-   (:math:`F_D`) forces.
-
 
 Applying finite differences
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -391,16 +377,13 @@ Here we needed two (second order in one dimension, time).
 .. figure:: img/stencil_stokesball.svg
 
    *Stencil* of the finite differences approximation for the problem
-   of a ball falling within a fluid. In order to calculate :math:`z`
-   at :math:`i+1` we need to know :math:`z` at :math:`i` and at 
-   :math:`i-1`.
+   of a ball falling within a fluid. In order to calculate :math:`i+1`
+   we need to know :math:`i` and :math:`i-1`.
 
 .. figure:: img/stencil_stokesball_boundary.svg
 
    Stencil of the finite differences approximation illustrating
-   the boundary (initial) condition requirement; :math:`z` at 
-   :math:`i=1` cannot be calculated using the basic discretized
-   version of the equation: one needs special *boundary condition*.
+   the boundary (initial) condition requirement.
 
 .. topic:: Exercise
 
