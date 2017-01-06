@@ -62,6 +62,7 @@ for it in range(1, nt):
 		# equation since we don't know value for z_{-1}
 		# This is the zero velocity boundary (initial) condition
 		z[it] = (Fb + Fg - z[it-1] * (-2*m/dt**2) - z[it] * (m/dt**2 + A/(2*dt))) / (m/dt**2 - A/(2*dt))
+		#                                           ^^^^^
 	else:
 		# At timesteps it>1 we do know two previous values,
 		# z[it-1] and z[it-2] so we use the normal discretized equation

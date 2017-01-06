@@ -19,9 +19,9 @@ SECINMYR = 1e6*SECINYR
 #####################################
 #### Define the model parameters ####
 #####################################
-nt = 10  # num of timesteps
-nx = 20  # num of (spatial) grid points
-totaltime = 10*SECINMYR # total time to run
+nt = 2  # num of timesteps
+nx = 5  # num of (spatial) grid points
+totaltime = 100*SECINMYR # total time to run
 L = 100e3 # size of the model (lithosphere thickness)
 
 T_surf = 0     # boundary condition, surface
@@ -38,30 +38,11 @@ dt = totaltime/(nt-1)
 # between the main grid points. 
 x_mp = x + 0.5*dx
 
-# Generate the arrays to hold the physical parameters
-rho = np.empty(nx)   # density at main grid (kg/m3)
-Cp = np.empty(nx)    # heat capacity at main grid (J/kgK)
-H = np.empty(nx)     # heat production at main grid (W/m3)
-alpha = np.empty(nx) # heat conductivity at mid-point grid (W/mK)
-
-# Fill in the values, two layer lithosphere:
-#  crust:   0- 35 km
-#  mantle: 35-100 km
-idx_crust = x < 35e3
-idx_mantle = x > 35e3
-
-rho[idx_crust] = 2800
-rho[idx_mantle] = 3300
-Cp[idx_crust] = 800
-Cp[idx_mantle] = 1250
-H[idx_crust] = 2.0e-6
-H[idx_mantle] = 0.02e-6
-
-idx_crust_mp = x_mp < 35e3
-idx_mantle_mp = x_mp > 35e3
-
-alpha[idx_crust] = 2.5
-alpha[idx_mantle] = 2.5
+# Set the (constant) physical parameters
+rho = 3300
+Cp = 1250
+H = 0.1e-6
+alpha = 2.5
 
 # Generate the array to hold the temperature field
 # and initialize it with the initial condition
@@ -89,24 +70,25 @@ for it in range(nt):
 	# Here we do it every time step.
 	for ix in range(1, nx-1):
 		# Set the matrix coefficients for the inner nodes
-		M[ix, ix-1] = -alpha[ix-1]/dx**2
-		M[ix, ix  ] = rho[ix]*Cp[ix]/dt + alpha[ix]/dx**2 + alpha[ix-1]/dx**2
-		M[ix, ix+1] = -alpha[ix]/dx**2
-		rhs[ix] = -T_old[ix] * (-rho[ix] * Cp[ix] / dt) + H[ix]
+		M[ix, ix-1] = -alpha/dx**2
+		M[ix, ix  ] = rho*Cp/dt + alpha/dx**2 + alpha/dx**2
+		M[ix, ix+1] = -alpha/dx**2
+		rhs[ix] = T_old[ix] * rho * Cp / dt + H
 
-	# ... and then for boundaries
+	# ... and then for boundaries:
+	# (Dividing by dx**2 here is done to make the matrix coefficients
+	# to be in the same order of magnitude with those of inner nodes,
+	# which makes printing prettier...)
 	ix = 0
-	M[ix, ix] = 1 / dx**2    # dividing by dx**2 makes all the values in the matrix
-	                         # to have a same order of magnitude => easier to solve
+	M[ix, ix] = 1 / dx**2
 	rhs[ix] = T_surf / dx**2
 
-	ix = nx-1
+	ix = nx-1 
 	M[ix, ix] = 1 / dx**2
 	rhs[ix] = T_bott / dx**2
 
-
 	# Uncomment to print the final matrix:
-	#printarr(M)
+	printarr(M)
 
 	# Solve the system of equations
 	res = np.linalg.solve(M, rhs)

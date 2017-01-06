@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction to lithospheric geodynamic modelling &#8212; IntroGM 17.1 documentation</title>
+    <title>Finite differences formulation of the heat conduction problem &#8212; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Finite differences method I" href="finite_differences_1.html" />
+    <link rel="prev" title="Finite differences method I" href="finite_differences_1.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -43,18 +43,21 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="introduction-to-lithospheric-geodynamic-modelling">
-<h1>Introduction to lithospheric geodynamic modelling<a class="headerlink" href="#introduction-to-lithospheric-geodynamic-modelling" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="finite_differences_1.html">Finite differences method I</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="finite_differences_1.html#simple-example-throwing-a-ball">Simple example: Throwing a ball</a></li>
-<li class="toctree-l2"><a class="reference internal" href="finite_differences_1.html#less-simple-example-falling-sphere-in-a-fluid">Less simple example: Falling sphere in a fluid</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fd_heat_conduction.html">Finite differences formulation of the heat conduction problem</a></li>
-</ul>
+  <div class="section" id="finite-differences-formulation-of-the-heat-conduction-problem">
+<h1>Finite differences formulation of the heat conduction problem<a class="headerlink" href="#finite-differences-formulation-of-the-heat-conduction-problem" title="Permalink to this headline">¶</a></h1>
+<p>The full heat conduction-advection-production equation seen before
+can be stated in 1D as</p>
+<div class="math" id="equation-heat_eq_full">
+<span class="eqno">(1)<a class="headerlink" href="#equation-heat_eq_full" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\delta T}{\delta t} + v_x \frac{\delta T}{\delta x} \right) = \frac{\delta}{\delta x} \left( \alpha(x) \frac{\delta T}{\delta x} \right) + H(x)\]</div>
+<p>We can simplify equation <a class="reference internal" href="#equation-heat_eq_full">(1)</a> by assuming that there is no
+advection of heat and that all the physical properties are constant:</p>
+<div class="math" id="equation-heat_eq_noadv_const">
+<span class="eqno">(2)<a class="headerlink" href="#equation-heat_eq_noadv_const" title="Permalink to this equation">¶</a></span>\[\rho C_p \frac{\delta T}{\delta t} = \alpha \frac{\delta^2 T}{\delta x^2} + H\]</div>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<p>Discretize the equation <a class="reference internal" href="#equation-heat_eq_noadv_const">(2)</a>. Use forward difference
+approximation in time (<span class="math">\(t\)</span>) and central difference approximation
+in space (<span class="math">\(x\)</span>).</p>
 </div>
 </div>
 
@@ -66,15 +69,15 @@
         <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="finite_differences_1.html" title="next chapter">Finite differences method I</a></li>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="finite_differences_1.html" title="previous chapter">Finite differences method I</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/index.rst.txt"
+      <li><a href="_sources/fd_heat_conduction.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -100,7 +103,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/index.rst.txt"
+      <a href="_sources/fd_heat_conduction.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

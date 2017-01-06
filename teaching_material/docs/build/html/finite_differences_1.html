@@ -27,6 +27,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Finite differences formulation of the heat conduction problem" href="fd_heat_conduction.html" />
     <link rel="prev" title="Introduction to lithospheric geodynamic modelling" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -287,6 +288,9 @@ to calculate.</p>
 see what is the effect of large or small number of steps taken.
 Can you estimate how long does it take for the ball to return
 back to the ground, by varying the number of steps and total time?</p>
+<p>How would you try to estimate the <em>exact</em> time it takes for the
+ball to reach the ground using the python script only?
+That is, how would you estimate the error of the numerical solution?</p>
 </div>
 </div>
 <div class="section" id="less-simple-example-falling-sphere-in-a-fluid">
@@ -409,12 +413,15 @@ on the order of the differential and on the dimensions of the problem.
 Here we needed two (second order in one dimension, time).</p>
 <div class="figure" id="id5">
 <img alt="_images/stencil_stokesball.svg" src="_images/stencil_stokesball.svg" /><p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text"><em>Stencil</em> of the finite differences approximation for the problem
-of a ball falling within a fluid. In order to calculate <span class="math">\(i+1\)</span>
-we need to know <span class="math">\(i\)</span> and <span class="math">\(i-1\)</span>.</span></p>
+of a ball falling within a fluid. In order to calculate <span class="math">\(z\)</span>
+at <span class="math">\(i+1\)</span> we need to know <span class="math">\(z\)</span> at <span class="math">\(i\)</span> and at
+<span class="math">\(i-1\)</span>.</span></p>
 </div>
 <div class="figure" id="id6">
 <img alt="_images/stencil_stokesball_boundary.svg" src="_images/stencil_stokesball_boundary.svg" /><p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Stencil of the finite differences approximation illustrating
-the boundary (initial) condition requirement.</span></p>
+the boundary (initial) condition requirement; <span class="math">\(z\)</span> at
+<span class="math">\(i=1\)</span> cannot be calculated using the basic discretized
+version of the equation: one needs special <em>boundary condition</em>.</span></p>
 </div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
@@ -442,7 +449,13 @@ the discretized equation <a class="reference internal" href="#equation-eq_stokes
 lines (l. 64 and l. 69) so that the next elevation will be calculated.</p>
 <p>Once the code works, vary the number of time steps and the size
 of the time step, and compare the results to the given analytical
-solution.</p>
+solution: What happens if you make the time step much larger than
+the default value?</p>
+<p>Imagine you could not see the analytical solution. How would you
+know you have reached the best solution?</p>
+<p>(Note that this time <span class="math">\(nt\)</span>, number of time steps, and <span class="math">\(dt\)</span>,
+size of the time step, is set, and they together determine the total
+run time of the model.)</p>
 </div>
 <table class="docutils footnote" frame="void" id="fd-taylor" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -512,6 +525,7 @@ once to get</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">Introduction to lithospheric geodynamic modelling</a></li>
+      <li>Next: <a href="fd_heat_conduction.html" title="next chapter">Finite differences formulation of the heat conduction problem</a></li>
   </ul></li>
 </ul>
 </div>

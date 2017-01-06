@@ -224,6 +224,10 @@ to calculate.
    Can you estimate how long does it take for the ball to return
    back to the ground, by varying the number of steps and total time?
 
+   How would you try to estimate the *exact* time it takes for the
+   ball to reach the ground using the python script only? 
+   That is, how would you estimate the error of the numerical solution?
+
 Less simple example: Falling sphere in a fluid
 ----------------------------------------------
 
@@ -428,7 +432,15 @@ Here we needed two (second order in one dimension, time).
 
    Once the code works, vary the number of time steps and the size
    of the time step, and compare the results to the given analytical 
-   solution.
+   solution: What happens if you make the time step much larger than
+   the default value? 
+
+   Imagine you could not see the analytical solution. How would you
+   know you have reached the best solution?
+
+   (Note that this time :math:`nt`, number of time steps, and :math:`dt`,
+   size of the time step, is set, and they together determine the total
+   run time of the model.)
 
 
 
