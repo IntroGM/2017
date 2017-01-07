@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import erf
@@ -77,22 +76,24 @@ dt = totaltime / (nt-1)
 T = np.zeros((nx,nt)) # creates an 2D array where location varies along rows
                       # and time along columns
 T[:, 0] = T_ini       # set the initial condition
-T[0, :] = T_surface   # set the upper boundary condition
-T[nx-1, :] = T_bottom # set the lower boundary condition
 
 # Generate an array of time values for plotting purposes
 time = np.zeros(nt)
 time[0] = 0
 
 # Loop over every time step, always calculating the new temperature 
-# at each depth
-# The first (T[0,:]) and last (T[nx,:]) rows are skipped
-# since these values are known from the boundary condition.
-# The first columnt (T[:,0]) is also skipped since these 
-# values are known from the initial condition
+# at time step 'it', at every depth, based on the temperature
+# from the previous time step, 'it-1'
 for it in range(1, nt):
-	for ix in range(1, nx-1):
-		T[ix, it] = 
+	# Set the boundary values
+	T[0, it] = T_surface
+	T[nx-1, it] = T_bottom
+
+
+	## Implement here the code where you loop over 
+	## each (spatial) grid point and calculate the 
+	## new temperature values based on the old ones.
+	...
 
 	# Calculate the time in seconds at this timestep
 	time[it] = time[it-1] + dt

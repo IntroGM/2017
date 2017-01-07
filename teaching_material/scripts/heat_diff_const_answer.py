@@ -23,8 +23,8 @@ T_surface = 0      # boundary condition at the surface
 T_bottom  = 1350   # boundary condition at the bottom
 
 L         = 100e3  # height of the rock column, meters
-nx        = 10     # number of grid points in space
-nt        = 500    # number of grid points in time
+nx        = 6     # number of grid points in space
+nt        = 2000    # number of grid points in time
 totaltime = 60*60*24*365.25*10e6 # total time to calculate, in seconds
 #####################
 
@@ -54,7 +54,7 @@ x = np.linspace(0, L, nx)
 # values are known from the initial condition
 for it in range(1, nt):
 	for ix in range(1, nx-1):
-		T[ix, it] = (k * (T[ix+1, it-1] - 2*T[ix, it-1] + T[ix-1, it-1]) / dx**2) * dt / (rho*Cp) + T[ix, it-1]
+		T[ix, it] = (alpha * (T[ix+1, it-1] - 2*T[ix, it-1] + T[ix-1, it-1]) / dx**2) * dt / (rho*Cp) + T[ix, it-1]
 
 	# Calculate the time in seconds at this timestep
 	time[it] = time[it-1] + dt

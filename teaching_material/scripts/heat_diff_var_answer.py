@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import erf
@@ -77,8 +76,6 @@ dt = totaltime / (nt-1)
 T = np.zeros((nx,nt)) # creates an 2D array where location varies along rows
                       # and time along columns
 T[:, 0] = T_ini       # set the initial condition
-T[0, :] = T_surface   # set the upper boundary condition
-T[nx-1, :] = T_bottom # set the lower boundary condition
 
 # Generate an array of time values for plotting purposes
 time = np.zeros(nt)
@@ -91,6 +88,10 @@ time[0] = 0
 # The first columnt (T[:,0]) is also skipped since these 
 # values are known from the initial condition
 for it in range(1, nt):
+	# Set the boundary values
+	T[0, it] = T_surface
+	T[nx-1, it] = T_bottom
+
 	for ix in range(1, nx-1):
 		T[ix, it] = (  (  alpha[ix] * (T[ix+1, it-1] - T[ix, it-1]) - alpha[ix-1] * (T[ix, it-1] - T[ix-1, it-1])) / dx**2 + H[ix] ) * dt / (rho[ix] * Cp[ix]) + T[ix, it-1]
 
