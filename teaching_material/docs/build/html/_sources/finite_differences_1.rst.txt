@@ -1,7 +1,7 @@
 .. Finite differences method section
 
-Finite differences method I
-===========================
+Finite differences method introduction
+======================================
 
 The method of finite differences is used, as the name suggests, to transform 
 *infinitesimally small* differences of variables in differential equations to 
@@ -168,6 +168,15 @@ grid spacing) of 0.5 seconds, which will lead to seven grid points.
    3.0            6
    ======== ===== =====
 
+.. figure:: img/FD_sketches_throw.png
+   :align: center
+
+   Illustration of the grid used in the finite differences solution
+   of man throwing a ball. 
+   Since the variable here is time,
+   each *grid point* can also be called a *time step*. 
+
+
 It is important to keep in mind that the *grid index* (:math:`i`), which is an 
 order number, is separate from the physical values, such as :math:`t_i` or :math:`z_i`.
 We already know the time and location at time step zero, so we can calculate
@@ -235,8 +244,8 @@ In the following, we will use finite differences to solve a simple ordinary
 differential equation that describes how a solid ball falls down within
 a viscous fluid.
 
-**Stokes' law** relates the frictional resistance of a falling sphere in a viscous 
-fluid to the velocity of the sphere:
+**Stokes' law** relates the frictional resistance of a solid 
+falling sphere in a viscous fluid to the velocity of the sphere:
 
 .. math::
 
@@ -245,7 +254,8 @@ fluid to the velocity of the sphere:
 where :math:`F_D` is the frictional force, :math:`\eta` viscosity of the 
 surrounding fluid, :math:`R` radius of the sphere, and :math:`v` velocity
 of the sphere. This force is directed opposite to the direction of the 
-velocity (thus the minus sign).
+velocity (thus the minus sign). The Stokes' law is valid at low
+*Reynolds number* values [#reynolds_number]_.
 
 Additionally, we know the gravitational force experienced by the sphere:
 
@@ -416,7 +426,7 @@ Here we needed two (second order in one dimension, time).
    Use following parameters:
 
       - fluid viscosity: 100 Pa s (honey)
-      - fluid density: 1000 kg/m\ :sup:`3`
+      - fluid density: 1420 kg/m\ :sup:`3`
       - sphere density: 7750 kg/m\ :sup:`3` (steel)
       - sphere radius: 2 cm
       - time step (grid spacing), :math:`\Delta t`: 0.5 ms
@@ -449,6 +459,19 @@ Here we needed two (second order in one dimension, time).
 .. [#fd_taylor] The finite differences method can also be thought as an approximation 
    for the function by Taylor series expansion where higher order terms have 
    been omitted.
+
+.. [#reynolds_number] Reynolds number is a mesaure of the ratio of inertial
+   forces and viscous forces:
+
+   .. math::
+
+      Re = \frac{\rho v L}{\eta}
+
+   where :math:`L` is the characteristic length scale. With high :math:`\eta`
+   the flow is *laminar*, whereas typically with high velocities the
+   flow becomes *turbulent*. The *critical Reynolds number*, where laminar
+   flow turns turbulent, varies depending on the geometry of the system,
+   but for the problem here is in the order of :math:`Re=10`.
 
 .. [#fd_stokes_analytical] Let's rewrite the equation in form
 

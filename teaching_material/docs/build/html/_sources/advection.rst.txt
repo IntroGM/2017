@@ -1,0 +1,41 @@
+Advection
+=========
+
+The one-dimensional equation desccribing the advection of field :math:`f` is
+
+.. math::
+   \frac{\partial f}{\partial t} = -v_x \frac{\partial f}{\partial x}
+   :label: adv-1d         
+
+where :math:`v_x` is the velocity. Despite its very simple appearance,
+its numerical solutions often cause some (or a lot of) trouble.
+
+.. topic:: Exercise
+
+   Discretize equation :eq:`adv-1d` with forward difference
+   in time, and
+
+   - forward,
+   - central,
+   - backward difference in space.
+
+.. figure:: img/advection.svg
+
+   Illustration of the advection differential equation
+
+.. figure:: img/advection_fd_upwind.svg
+
+   Illustration of the advection upwind FD solution
+   with exact results caused by the right combination
+   of time step, grid size and velocity. The value
+   of the field at grid point :math:`n` is copied
+   from the grid point :math:`n-1`.
+   
+
+.. figure:: img/advection_fd_upwind_halfstep.svg
+
+   Illustration of the advection upwind FD solution 
+   in a typical case where :math:`\frac{v_x\Delta t}{\Delta x} \ne 1`.
+   Effectively, a linear interpolation between grid points
+   is taking place, causing numerical diffusion in the solution.
+

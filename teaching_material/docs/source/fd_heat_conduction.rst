@@ -100,7 +100,7 @@ stencil of the problem.
      + the spatial resolution higher?
      + the temporal resolution higher?
 
-   - Are any combinations of :code:`nt` and :code:`nx` usable?
+   - Are any combinations of :code:`nt` and :code:`nx` un-usable?
      What is their relation?
 
 Von Neumann stability analysis
@@ -170,7 +170,7 @@ grids. The basic idea is to start with an approach where some calculated
 variables and/or physical parameters are defined *at different locations*
 than the others.
 
-The heat flow i(:math:`q=-\alpha\frac{\partial T}{\partial x}`) is a good example: 
+The heat flow (:math:`q=-\alpha\frac{\partial T}{\partial x}`) is a good example: 
 If we approximate the heat flow with a central difference over two grid points,
 the resulting approximation is valid *between* those two grid points:
 
@@ -183,7 +183,7 @@ to the main grid points.
 
 To avoid too much interpolation and averaging, one can define different
 grids for different variables. In the case of heat equation, natural choice
-is to define :math:`T,~C_p,~\mathrm{and}~\rho` at the *main grid points*, just
+is to define :math:`T,~C_p` and :math:`\rho` at the *main grid points*, just
 like we have done before. However, heat conductivity :math:`\alpha` 
 and flow :math:`q` is 
 defined on another grid that has grid points between the main grid points.
@@ -204,14 +204,15 @@ at the main grid points.
 
    The last row of heat conductivity values (i = 3) are *ghost points*
    and not used in the solution. The mid-point grid does not need to include
-   those points, but for technical (code implementation) related reasons
+   those points, but for technical (code implementation related) reasons
    it is often easier to keep both grids the same size in all directions.
 
 .. topic:: Exercise
 
    Write an finite differences expression using staggered grids
    to calculate the temperature at grid point :math:`n=2` time step
-   :math:`i=3`.
+   :math:`i=3`. You should not need any "half-indices" or averaging
+   of variables.
 
    .. math:: T_{2}^{3} = \mathrm{~...}
 
@@ -230,4 +231,51 @@ at the main grid points.
       + Instead of one layer crust, specify an upper and a lower crust
       + Set the upper crust heat production to :math:`2.5~\mathrm{µWm^{-3}}`,
         and the lower crust to :math:`1.0~\mathrm{µWm^{-3}}`
+
+   3. Modify the script for yet another problem: Model the cooling of an intrusion of a hot
+      sill in to mid-crust. This requires changing almost all of the parameters
+      in the script but should not require any modifications to the actual
+      finite-differences part (the time loop).
+
+      + Model only the crustal part of the lithosphere, thickness 35 km.
+      + Surface temperature is zero degrees celsius, moho temperature 600
+        degrees.
+      + At the beginning of the model, the sill has just intruded so that
+        it occupies the depth from 7 km to 10 km.
+      + The sill has an initial temperature of 1150 degrees (molten basalt)
+      + The remaining of the crust has an initial temperature given by
+
+        .. math::
+           T(x) = -\frac{1}{2}\frac{H}{\alpha}x^2 + C_1 x 
+
+        where
+
+        .. math::
+           C_1 = \left( T_{\mathrm{bott}} + \frac{1}{2}\frac{H}{\alpha}L^2 \right) / L
+
+        (See :code:`example_element-multiplication.py` for an
+        example of function evaluation in python)
+
+      Use following physical parameters to start with:
+
+      + Intrusion: 
+        
+        * :math:`\alpha = 4.0`
+        * :math:`\rho = 3200`
+        * :math:`C_p = 1250`
+        * :math:`H=10^{-6}`
+
+      + Rest of the crust:
+
+        * :math:`\alpha = 2.5`
+        * :math:`\rho = 2900`
+        * :math:`C_p = 800`
+        * :math:`H=10^{-6}`
+      
+
+      Things to consider:
+
+      + How high spatial *resolution* do you need?
+      + How long do you estimate the model needs to run in order to cool
+        down the whole sill? How many time steps do you need?
 

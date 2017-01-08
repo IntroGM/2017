@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction to lithospheric geodynamic modelling &#8212; IntroGM 17.1 documentation</title>
+    <title>Advection &#8212; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Finite differences method introduction" href="finite_differences_1.html" />
+    <link rel="prev" title="Finite differences formulation of the heat conduction problem" href="fd_heat_conduction.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -43,26 +43,38 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="introduction-to-lithospheric-geodynamic-modelling">
-<h1>Introduction to lithospheric geodynamic modelling<a class="headerlink" href="#introduction-to-lithospheric-geodynamic-modelling" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="finite_differences_1.html">Finite differences method introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="finite_differences_1.html#simple-example-throwing-a-ball">Simple example: Throwing a ball</a></li>
-<li class="toctree-l2"><a class="reference internal" href="finite_differences_1.html#less-simple-example-falling-sphere-in-a-fluid">Less simple example: Falling sphere in a fluid</a></li>
+  <div class="section" id="advection">
+<h1>Advection<a class="headerlink" href="#advection" title="Permalink to this headline">¶</a></h1>
+<p>The one-dimensional equation desccribing the advection of field <span class="math">\(f\)</span> is</p>
+<div class="math" id="equation-adv-1d">
+<span class="eqno">(1)<a class="headerlink" href="#equation-adv-1d" title="Permalink to this equation">¶</a></span>\[\frac{\partial f}{\partial t} = -v_x \frac{\partial f}{\partial x}\]</div>
+<p>where <span class="math">\(v_x\)</span> is the velocity. Despite its very simple appearance,
+its numerical solutions often cause some (or a lot of) trouble.</p>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<p>Discretize equation <a class="reference internal" href="#equation-adv-1d">(1)</a> with forward difference
+in time, and</p>
+<ul class="simple">
+<li>forward,</li>
+<li>central,</li>
+<li>backward difference in space.</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fd_heat_conduction.html">Finite differences formulation of the heat conduction problem</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="fd_heat_conduction.html#von-neumann-stability-analysis">Von Neumann stability analysis</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fd_heat_conduction.html#spatially-varying-physical-parameters">Spatially varying physical parameters</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="fd_heat_conduction.html#staggered-grids">Staggered grids</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="advection.html">Advection</a></li>
-</ul>
+</div>
+<div class="figure" id="id1">
+<img alt="_images/advection.svg" src="_images/advection.svg" /><p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Illustration of the advection differential equation</span></p>
+</div>
+<div class="figure" id="id2">
+<img alt="_images/advection_fd_upwind.svg" src="_images/advection_fd_upwind.svg" /><p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Illustration of the advection upwind FD solution
+with exact results caused by the right combination
+of time step, grid size and velocity. The value
+of the field at grid point <span class="math">\(n\)</span> is copied
+from the grid point <span class="math">\(n-1\)</span>.</span></p>
+</div>
+<div class="figure" id="id3">
+<img alt="_images/advection_fd_upwind_halfstep.svg" src="_images/advection_fd_upwind_halfstep.svg" /><p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Illustration of the advection upwind FD solution
+in a typical case where <span class="math">\(\frac{v_x\Delta t}{\Delta x} \ne 1\)</span>.
+Effectively, a linear interpolation between grid points
+is taking place, causing numerical diffusion in the solution.</span></p>
 </div>
 </div>
 
@@ -74,15 +86,15 @@
         <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="finite_differences_1.html" title="next chapter">Finite differences method introduction</a></li>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="fd_heat_conduction.html" title="previous chapter">Finite differences formulation of the heat conduction problem</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/index.rst.txt"
+      <li><a href="_sources/advection.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -108,7 +120,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/index.rst.txt"
+      <a href="_sources/advection.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -14,6 +14,7 @@ Introduction to lithospheric geodynamic modelling
 
    finite_differences_1
    fd_heat_conduction
+   advection
 
 
 
