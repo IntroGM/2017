@@ -436,7 +436,7 @@ Here we needed two (second order in one dimension, time).
 
 .. topic:: Exercise
 
-   Modify the script :code:`falling_sphere.py` so that you implement
+   Modify the script falling_sphere.py_ so that you implement
    the discretized equation :eq:`eq_stokes_sphere_discr2`. Fill in the two 
    lines (l. 64 and l. 69) so that the next elevation will be calculated.
 
@@ -525,3 +525,4 @@ Here we needed two (second order in one dimension, time).
 
 
 
+.. _falling_sphere.py: ../../../scripts/falling_sphere.py

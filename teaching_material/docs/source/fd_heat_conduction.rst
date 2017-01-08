@@ -76,7 +76,7 @@ stencil of the problem.
       (in both indices). Mark the grid points that are governed
       by the boundary or initial conditions, and those that will
       be calculated. 
-   3. Copy the given code template :code:`heat_diff_template.py` to
+   3. Copy the given code template heat_diff_template.py_ to
       to :code:`my_heat_diff.py` (or something similar) and
       implement your own code. The structure of the code is already
       given, but a lot of code is missing in places marked
@@ -218,7 +218,7 @@ at the main grid points.
 
 .. topic:: Exercise
    
-   Script :code:`heat_diff_var.py` is almost ready implementation
+   Script heat_diff_var.py_ is almost ready implementation
    of the heat diffusion+production problem with variable
    physical parameters and a staggered grid. The structure is
    very similar to the template of the previous coding exercise. 
@@ -253,7 +253,7 @@ at the main grid points.
         .. math::
            C_1 = \left( T_{\mathrm{bott}} + \frac{1}{2}\frac{H}{\alpha}L^2 \right) / L
 
-        (See :code:`example_element-multiplication.py` for an
+        (See example_element_multiplication.py_ for an
         example of function evaluation in python)
 
       Use following physical parameters to start with:
@@ -279,3 +279,6 @@ at the main grid points.
       + How long do you estimate the model needs to run in order to cool
         down the whole sill? How many time steps do you need?
 
+.. _heat_diff_template.py: ../../../scripts/heat_diff_template.py
+.. _heat_diff_var.py: ../../../scripts/heat_diff_var.py
+.. _example_element_multiplication.py: ../../../scripts/example_element-multiplication.py
