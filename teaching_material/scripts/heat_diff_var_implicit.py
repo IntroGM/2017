@@ -93,7 +93,7 @@ for it in range(nt):
 
 	M[:, :] = 0
 
-	# Generate the left hand side matrix for the system fo equations
+	# Generate the left hand side matrix for the system of equations
 	# Note that if physical fields are kept constant from one time
 	# step to the next one, this only needs to be done once.
 	# Here we do it every time step.
