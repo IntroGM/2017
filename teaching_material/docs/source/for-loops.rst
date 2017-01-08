@@ -4,59 +4,55 @@
 Sources
 -------
 
-This lesson is based on the `Software Carpentry
-group's <http://software-carpentry.org/>`__ lessons on `Programming with
-Python <http://swcarpentry.github.io/python-novice-inflammation/>`__.
+This lesson is based on the `Software Carpentry group's <http://software-carpentry.org/>`__ lessons on `Programming with Python <http://swcarpentry.github.io/python-novice-inflammation/>`__.
 
 Basics of ``for`` loops
 -----------------------
 
-
-
-
-
 1. Loops allow parts of code to be repeated over some number of times.
-   One of the simple options for loops in Python is the ``for`` loop.
+   One of the simple loop options in Python is the ``for`` loop.
 
    .. code:: python
 
-   >>> word = 'rock'
-   >>>  for char in word:
-   ...    print(char)
-   ...
-   r
-   o
-   c
-   k
+       >>> word = 'rock'
+       >>> for char in word:
+       ...    print(char)
+       ...
+       r
+       o
+       c
+       k
 
-3. ``for`` loops in Python have the general form below.
+2. ``for`` loops in Python have the general form below.
 
    .. code:: python
 
-   for variable in collection:
-       do things with variable
+       for variable in collection:
+           do things with variable
 
    The ``variable`` can be any name you like, and the statement of the ``for`` loop must end with a ``:``.
    The code that should be executed as part of the loop must be indented beneath the ``for`` loop, and the typical indentation is 4 spaces.
    There is not additional special word needed to end the loop, just change the indentation back to normal.
-4. Let's consider another example.
+
+3. Let's consider another example.
 
    .. code:: python
 
-   >>> length = 0
-   >>> for letter in 'earthquake':
-   ...    length = length + 1
-   ...
-   >>> print('There are', length, 'letters')
-   There are 10 letters
+       >>> length = 0
+       >>> for letter in 'earthquake':
+       ...    length = length + 1
+       ...
+       >>> print('There are', length, 'letters')
+       There are 10 letters
 
    Note that the variable used in the loop, ``letter`` is just a normal variable and still exists after the loop has completed with the final value given to letter.
    
    .. code:: python
-   >>> print('After the loop, letter is', letter)
-   e
 
-5. A loop can be used to iterate over any list of values in Python.
+       >>> print('After the loop, letter is', letter)
+       e
+
+4. A loop can be used to iterate over any list of values in Python.
    So far we have considered only character strings, but we could also write a loop that performs a calculation a specified number of times.
 
    .. code:: python
@@ -75,34 +71,35 @@ Basics of ``for`` loops
    When given an integer (whole number) as an argument, ``range()`` will produce a list of numbers with a length equal to the specified number.
    The list starts at zero and ends with number-1.
 
-6. Often when you use ``for`` loops, you are looping over the values in
+5. Often when you use ``for`` loops, you are looping over the values in
    a list and either calculating a new value or modifying the existing
    values. Let's consider an example.
 
    .. code:: python
 
-   >>> mylist = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
-   >>> print(mylist)
-   [0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
-   >>> for i in range(6):
-   ...     mylist[i] = mylist[i] + i
-   ...
-   >>> print(mylist)
-   [0.0, 2.0, 4.0, 6.0, 8.0, 10.0]
+       >>> mylist = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
+       >>> print(mylist)
+       [0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
+       >>> for i in range(6):
+       ...     mylist[i] = mylist[i] + i
+       ...
+       >>> print(mylist)
+       [0.0, 2.0, 4.0, 6.0, 8.0, 10.0]
 
    So, what happened?
    We first create a list of 6 numbers.
    Then, we loop over 6 values using the ``range()`` function and add each value to the existing location in ``mylist``.
-7. One of the drawbacks in the example above is that we need to know the length of the list before running that ``for`` loop example.
+
+6. One of the drawbacks in the example above is that we need to know the length of the list before running that ``for`` loop example.
    However, we already know how to find the length of a list using the ``len()`` function, and we can take advantage of this knowledge to make our ``for`` loop more flexible.
 
    .. code:: python
 
-   >>> for i in range(len(mylist)):
-   ...     mylist[i] = mylist[i] + i
-   ...
-   >>> print(mylist)
-   [0.0, 3.0, 6.0, 9.0, 12.0, 15.0]
+       >>> for i in range(len(mylist)):
+       ...     mylist[i] = mylist[i] + i
+       ...
+       >>> print(mylist)
+       [0.0, 3.0, 6.0, 9.0, 12.0, 15.0]
 
    Using the ``len()`` function with ``range()`` to perform calcluations
    using list or array values is an *extremely* common operation in

@@ -24,8 +24,8 @@ Such an operation is a fairly common task when dealing with temperature data.
 
    .. code:: python
 
-   >>> def celsius_to_fahr(temp):
-   ...    return 9/5 * temp + 32
+       >>> def celsius_to_fahr(temp):
+       ...    return 9/5 * temp + 32
 
    The function definition opens with the keyword ``def`` followed by the name of the function and a list of parameter names in parentheses.
    The body of the function — the statements that are executed when it runs — is indented below the definition line.
@@ -42,11 +42,11 @@ Calling functions
 
    .. code:: python
 
-   >>> freezing_point =  celsius_to_fahr(0)
-   >>> print('Freezing point of water in Fahrenheit:', freezing_point)
-   Freezing point of water in Fahrenheit: 32.0
-   >>> print('Boiling point of water in Fahrenheit:', celsius_to_fahr(100))
-   Boiling point of water in Fahrenheit: 212.0
+       >>> freezing_point =  celsius_to_fahr(0)
+       >>> print('Freezing point of water in Fahrenheit:', freezing_point)
+       Freezing point of water in Fahrenheit: 32.0
+       >>> print('Boiling point of water in Fahrenheit:', celsius_to_fahr(100))
+       Boiling point of water in Fahrenheit: 212.0
 
 3. Now that we know how to create a function to convert Celsius to Fahrenheit, let's create another function called
    ``kelvin_to_celsius``:

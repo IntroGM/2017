@@ -17,6 +17,3 @@ Introduction to lithospheric geodynamic modelling
    fd_heat_conduction
    advection
    full_heat
-
-
-

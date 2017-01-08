@@ -51,8 +51,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'IntroGM'
-copyright = '2016, David Whipp, Lars Kaislaniemi'
-author = 'David Whipp, Lars Kaislaniemi'
+copyright = '2016, Lars Kaislaniemi and David Whipp'
+author = 'Lars Kaislaniemi and David Whipp'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -134,7 +134,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'IntroGM.tex', 'IntroGM Documentation',
-     'David Whipp, Lars Kaislaniemi', 'manual'),
+     'Lars Kaislaniemi and David Whipp', 'manual'),
 ]
 
 
@@ -158,6 +158,3 @@ texinfo_documents = [
      author, 'IntroGM', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
