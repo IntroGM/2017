@@ -25,8 +25,8 @@ T_bottom  = 1350   # boundary condition at the bottom
 		   # gradient between these two
 
 L         = 100e3  # height of the rock column, meters
-nx        = 20     # number of grid points in space
-nt        = 1000     # number of grid points in time
+nx        = 10     # number of grid points in space
+nt        = 100     # number of grid points in time
 totaltime = 100*SECINMYR # total time to calculate, in seconds
 
 rho    = 2800
@@ -34,7 +34,7 @@ Cp     = 800
 alpha  = 2.5
 H      = 0 #2.5e-6
 
-vx     = 400 / SECINMYR  # advection velocity, m/s
+vx     = -400 / SECINMYR  # advection velocity, m/s
                           #  ~ erosion speed
 
 # Generate an array of depth values 
@@ -88,18 +88,29 @@ for it in range(1, nt):
 
 	# Calculate internal nodes
 	for ix in range(1, nx-1):
-		T[ix] = ( ( alpha * (Tprev[ix+1] - 2*Tprev[ix] + Tprev[ix-1]) ) / dx**2 + H ) * dt / (rho * Cp) - vx * (Tprev[ix+1] - Tprev[ix-1]) * dt / (2*dx) + Tprev[ix] 
+		T[ix] = ( ( alpha * (Tprev[ix+1] - 2*Tprev[ix] + Tprev[ix-1]) ) / dx**2 + H ) * dt / (rho * Cp) - vx * (Tprev[ix] - Tprev[ix-1]) * dt / (dx) + Tprev[ix] 
 
 	# Calculate the time in seconds at this timestep
 	time[it] = time[it-1] + dt
 
 
+# Calculate analytical solution
+kappa = alpha/(rho*Cp)
+B1 = -vx/kappa
+B2 = -H/kappa
+if T_surface != 0:
+	raise Exception("analytical solution not valid")
+C12 = (T_bottom - B2*L/B1) / (1/B1 - np.exp(-B1*L)/B1)
+C3 = C12 / B1
+x_analytical = np.linspace(0, L, 200)
+T_analytical = B2*x_analytical/B1 + C3 - C12*np.exp(-B1*x_analytical)/B1
 
 ### Create the plot,
 # here we only plot the last time step
 fig, ax = plt.subplots() 
-ax.plot(T, x/1e3, '.-r')
-ax.plot(T_ini, x/1e3, '.--g')
+ax.plot(T, -x/1e3, '.--r')
+ax.plot(T_ini, -x/1e3, '.--g')
+ax.plot(T_analytical, -x_analytical/1e3, '-r')
 plt.xlabel("Temperature (C)")
 plt.ylabel("Depth (km)")
 plt.show()  

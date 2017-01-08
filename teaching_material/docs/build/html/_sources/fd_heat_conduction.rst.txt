@@ -7,14 +7,14 @@ The full heat conduction-advection-production equation seen before
 can be stated in 1D as 
 
 .. math::
-   \rho(x) C_p(x) \left( \frac{\delta T}{\delta t} + v_x \frac{\delta T}{\delta x} \right) = \frac{\delta}{\delta x} \left( \alpha(x) \frac{\delta T}{\delta x} \right) + H(x)
+   \rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)
    :label: heat_eq_full
 
 We can simplify equation :eq:`heat_eq_full` by assuming that there is no 
 advection of heat and that all the physical properties are constant:
 
 .. math::
-   \rho C_p \frac{\delta T}{\delta t} = \alpha \frac{\delta^2 T}{\delta x^2} + H
+   \rho C_p \frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2} + H
    :label: heat_eq_noadv_const
 
 .. topic:: Exercise
@@ -133,8 +133,8 @@ concentrated in the crust.
    and central difference approximation in space.
 
    .. math::
-      \rho(x) C_p(x) \frac{\delta T}{\delta t} = \frac{\partial}{\partial x} 
-      \left( \alpha(x) \frac{\delta T}{\delta x} \right) + H(x)
+      \rho(x) C_p(x) \frac{\partial T}{\partial t} = \frac{\partial}{\partial x} 
+      \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)
 
 Since the first order derivative of the temperature on the right hand side
 can no more be combined, we are left with expressions like 

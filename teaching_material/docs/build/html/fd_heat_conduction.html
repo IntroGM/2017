@@ -49,11 +49,11 @@
 <p>The full heat conduction-advection-production equation seen before
 can be stated in 1D as</p>
 <div class="math" id="equation-heat_eq_full">
-<span class="eqno">(1)<a class="headerlink" href="#equation-heat_eq_full" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\delta T}{\delta t} + v_x \frac{\delta T}{\delta x} \right) = \frac{\delta}{\delta x} \left( \alpha(x) \frac{\delta T}{\delta x} \right) + H(x)\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-heat_eq_full" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)\]</div>
 <p>We can simplify equation <a class="reference internal" href="#equation-heat_eq_full">(1)</a> by assuming that there is no
 advection of heat and that all the physical properties are constant:</p>
 <div class="math" id="equation-heat_eq_noadv_const">
-<span class="eqno">(2)<a class="headerlink" href="#equation-heat_eq_noadv_const" title="Permalink to this equation">¶</a></span>\[\rho C_p \frac{\delta T}{\delta t} = \alpha \frac{\delta^2 T}{\delta x^2} + H\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-heat_eq_noadv_const" title="Permalink to this equation">¶</a></span>\[\rho C_p \frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2} + H\]</div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
 <p>How many boundary conditions are needed in order to solve this
@@ -164,8 +164,8 @@ have also added the heat generation term <span class="math">\(H\)</span>.</p>
 <p>Again, use forward difference approximation in time,
 and central difference approximation in space.</p>
 <div class="math">
-\[\rho(x) C_p(x) \frac{\delta T}{\delta t} = \frac{\partial}{\partial x}
-\left( \alpha(x) \frac{\delta T}{\delta x} \right) + H(x)\]</div>
+\[\rho(x) C_p(x) \frac{\partial T}{\partial t} = \frac{\partial}{\partial x}
+\left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)\]</div>
 </div>
 <p>Since the first order derivative of the temperature on the right hand side
 can no more be combined, we are left with expressions like

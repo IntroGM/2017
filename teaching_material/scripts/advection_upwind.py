@@ -12,7 +12,7 @@ dx = 0.01 # grid spacing
 
 vx = 1.0   # advection velocity
 
-nt = 20 # how many time steps to take
+nt = 40 # how many time steps to take
 dt = 0.25 * dx / vx
 
 x = np.linspace(0, dx*nx, nx)
@@ -22,7 +22,8 @@ t = np.linspace(0, dt*nt, nt)
 
 # Generate initial field
 f_ini = np.zeros((nx))
-idx = (x < 0.4*x[-1]) & (x > 0.2*x[-1])
+#idx = (x < 0.4*x[-1]) & (x > 0.2*x[-1])
+idx = (x > 0.2*x[-1])
 f_ini[idx] = 1
 
 # Take boundary conditions directly from the initial field
@@ -48,7 +49,7 @@ for it in range(0, nt-1):
 
 
 # Plot some results
-for it in [0, 2, 19]:
-   plt.plot(x, f[it, :], '.-')
+for it in [0, 2, 19, 39]:
+   plt.plot(x, f[it, :], 'o-')
 plt.show()
 

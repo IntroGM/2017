@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction to lithospheric geodynamic modelling &#8212; IntroGM 17.1 documentation</title>
+    <title>Heat conduction with advection &#8212; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Finite differences method introduction" href="finite_differences_1.html" />
+    <link rel="prev" title="Advection" href="advection.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -43,18 +43,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="introduction-to-lithospheric-geodynamic-modelling">
-<h1>Introduction to lithospheric geodynamic modelling<a class="headerlink" href="#introduction-to-lithospheric-geodynamic-modelling" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="finite_differences_1.html">Finite differences method introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fd_heat_conduction.html">Finite differences formulation of the heat conduction problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fd_heat_conduction.html#spatially-varying-physical-parameters">Spatially varying physical parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advection.html">Advection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="full_heat.html">Heat conduction with advection</a></li>
+  <div class="section" id="heat-conduction-with-advection">
+<h1>Heat conduction with advection<a class="headerlink" href="#heat-conduction-with-advection" title="Permalink to this headline">¶</a></h1>
+<p>We now have all the tools to implement a &#8220;full&#8221; one-dimensional
+heat transfer equation where we consider</p>
+<ul class="simple">
+<li>heat conduction,</li>
+<li>heat advection,</li>
+<li>heat generation, and</li>
+<li>variable physical paramaters.</li>
 </ul>
-</div>
+<div class="math">
+\[\rho(x) \C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H\]</div>
 </div>
 
 
@@ -65,15 +65,15 @@
         <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="finite_differences_1.html" title="next chapter">Finite differences method introduction</a></li>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="advection.html" title="previous chapter">Advection</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/index.rst.txt"
+      <li><a href="_sources/full_heat.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -99,7 +99,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/index.rst.txt"
+      <a href="_sources/full_heat.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

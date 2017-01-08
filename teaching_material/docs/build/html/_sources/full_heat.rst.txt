@@ -1,0 +1,14 @@
+Heat conduction with advection
+==============================
+
+We now have all the tools to implement a "full" one-dimensional
+heat transfer equation where we consider
+
+- heat conduction,
+- heat advection, 
+- heat generation, and
+- variable physical paramaters.
+
+.. math::
+
+   \rho(x) \C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H

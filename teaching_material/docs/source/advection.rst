@@ -69,3 +69,30 @@ its numerical solutions often cause some (or a lot of) trouble.
      for :math:`f_n^{i+1}` change? How would this change the final advected field?
 
 .. topic:: Exercise
+
+   Let's solve the 1D advection equation with finite differences. For testing
+   purposes we will advect a simple step function :math:`f`:
+
+   .. math::
+
+      f = 0 \quad \mathrm{if}~x < 1 \\
+      f = 1 \quad \mathrm{if}~x \ge 1
+
+   The advection velocity :math:`v_x=1` will be positive, i.e. in direction
+   of the :math:`x` axis. We will run the model for 8 (seconds, in model time).
+
+   Use the following upwind discretization of the advection equation:
+
+   .. math::
+
+      \frac{f_n^{i+1}-f_n^i}{\Delta t} = -v_x\frac{f_n^i - f_{n-1}^i}{\Delta x}
+
+   1. Rearrange the discretized equation so that you get an expression 
+      for the function value of the next time step
+   2. How many boundary conditions do you need? What are those?
+   3. Create your python script: Either start one from scratch (possibly
+      copying material from the previous scripts) or use 
+      :code:`advection_upwind_template.py` to get yourself going.
+   4. Once your code is working, experiment with different combinations
+      of :math:`\Delta x`, :math:`\Delta t` and :math:`v_x` to see
+      how they affect the solution.

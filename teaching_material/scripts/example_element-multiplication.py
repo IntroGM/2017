@@ -32,7 +32,7 @@ print(" x: ")
 print(x)
 
 # Then, evaluate the function itself:
-f = C * x** - np.sin(x)
+f = C * x**2 - np.sin(x)
 print("\n f: ")
 print(f)
 

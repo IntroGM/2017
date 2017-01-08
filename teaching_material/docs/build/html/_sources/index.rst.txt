@@ -9,12 +9,13 @@ Introduction to lithospheric geodynamic modelling
 =================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    finite_differences_1
    fd_heat_conduction
    advection
+   full_heat
 
 
 
