@@ -92,7 +92,10 @@ its numerical solutions often cause some (or a lot of) trouble.
    2. How many boundary conditions do you need? What are those?
    3. Create your python script: Either start one from scratch (possibly
       copying material from the previous scripts) or use 
-      `advection_upwind_template.py </teaching_material/scripts/advection_upwind_template.py>` to get yourself going.
+      advection_upwind_template.py_ to get yourself going.
    4. Once your code is working, experiment with different combinations
       of :math:`\Delta x`, :math:`\Delta t` and :math:`v_x` to see
       how they affect the solution.
+
+.. _advection_upwind_template.py: ../../../scripts/advection_upwind_template.py
+
