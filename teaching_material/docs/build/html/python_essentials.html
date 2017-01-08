@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Heat conduction with advection &#8212; IntroGM 17.1 documentation</title>
+    <title>Python essentials &#8212; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,7 +27,8 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
-    <link rel="prev" title="Advection" href="advection.html" />
+    <link rel="next" title="Basic elements of Python" href="python-basic-elements.html" />
+    <link rel="prev" title="Introduction to lithospheric geodynamic modelling" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -43,30 +44,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="heat-conduction-with-advection">
-<h1>Heat conduction with advection<a class="headerlink" href="#heat-conduction-with-advection" title="Permalink to this headline">¶</a></h1>
-<p>We now have all the tools to implement a &#8220;full&#8221; one-dimensional
-heat transfer equation where we consider</p>
-<ul class="simple">
-<li>heat conduction,</li>
-<li>heat advection,</li>
-<li>heat generation, and</li>
-<li>variable physical paramaters.</li>
+  <div class="section" id="python-essentials">
+<h1>Python essentials<a class="headerlink" href="#python-essentials" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound" id="python-topics">
+<p class="caption"><span class="caption-text">Python topics:</span><a class="headerlink" href="#python-topics" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python-basic-elements.html">Basic elements of Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro-to-numpy.html">Introduction to NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for-loops.html"><code class="docutils literal"><span class="pre">for</span></code> loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditional-statements.html">Conditional statements</a></li>
 </ul>
-<div class="math" id="equation-heat-diff-adv-gen">
-<span class="eqno">(1)</span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H\]</div>
-<div class="topic">
-<p class="topic-title first">Exercise</p>
-<p>Discretize equation <a href="#equation-heat-diff-adv-gen">(1)</a>.</p>
-<p>Again, use forward difference in time and central difference in space
-for the diffusion term. For the advection term, however, you can
-try using either forward, backward or even central difference. This
-choice is easy to change later once your code is working.</p>
 </div>
-<p>We will implement a crustal scale heat transfer model, where
-we consider the heat diffusion from the moho towards the surface,
-heat generation within the crust, and upward heat advection caused by the removal
-of crustal material at the surface by erosion.</p>
 </div>
 
 
@@ -78,14 +67,15 @@ of crustal material at the surface by erosion.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="advection.html" title="previous chapter">Advection</a></li>
+      <li>Previous: <a href="index.html" title="previous chapter">Introduction to lithospheric geodynamic modelling</a></li>
+      <li>Next: <a href="python-basic-elements.html" title="next chapter">Basic elements of Python</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/full_heat.txt"
+      <li><a href="_sources/python_essentials.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -111,7 +101,7 @@ of crustal material at the surface by erosion.</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/full_heat.txt"
+      <a href="_sources/python_essentials.txt"
           rel="nofollow">Page source</a>
     </div>
 
