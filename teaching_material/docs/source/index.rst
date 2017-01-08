@@ -12,6 +12,7 @@ Introduction to lithospheric geodynamic modelling
    :maxdepth: 1
    :caption: Contents:
 
+   python_essentials
    finite_differences_1
    fd_heat_conduction
    advection
