@@ -97,5 +97,5 @@ its numerical solutions often cause some (or a lot of) trouble.
       of :math:`\Delta x`, :math:`\Delta t` and :math:`v_x` to see
       how they affect the solution.
 
-.. _advection_upwind_template.py: ../../../scripts/advection_upwind_template.py
+.. _advection_upwind_template.py: GHscripts/advection_upwind_template.py
 

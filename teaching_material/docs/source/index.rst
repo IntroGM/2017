@@ -4,6 +4,7 @@
    contain the root `toctree` directive.
 
 .. Some substitions
+.. |GHscripts| replace:: https://raw.githubusercontent.com/IntroGM/introgm.github.io/master/teaching_material/scripts
 
 Introduction to lithospheric geodynamic modelling
 =================================================
