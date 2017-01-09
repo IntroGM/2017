@@ -24,7 +24,7 @@ Resources
 ^^^^^^^^^
 
 - The scripts and script templates referred to in the teaching material can be found
-at the `GitHub scripts directory`_
+  at the `GitHub scripts directory`_
 - `Short NumPy tutorial`_
 - `Wolfram Alpha`_: has a simple calculator, plotting, equation solver, etc.
 
