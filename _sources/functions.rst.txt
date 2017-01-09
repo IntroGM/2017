@@ -20,23 +20,23 @@ Anatomy of a function
 Let's consider again the task of converting temperatures from Fahrenheit to Celsius.
 Such an operation is a fairly common task when dealing with temperature data.
 
-1. Let's define our first function called ``celsius_to_fahr``:
+Let's define our first function called ``celsius_to_fahr``:
 
-   .. code:: python
+.. code:: python
 
-       >>> def celsius_to_fahr(temp):
-       ...    return 9/5 * temp + 32
+   >>> def celsius_to_fahr(temp):
+   ...    return 9/5 * temp + 32
 
-   The function definition opens with the keyword ``def`` followed by the name of the function and a list of parameter names in parentheses.
-   The body of the function — the statements that are executed when it runs — is indented below the definition line.
+The function definition opens with the keyword ``def`` followed by the name of the function and a list of parameter names in parentheses.
+The body of the function — the statements that are executed when it runs — is indented below the definition line.
 
-   When we call the function, the values we pass to it are assigned to the corresponding parameter variables so that we can use them inside the function (e.g., the variable ``temp`` in this function example).
-   Inside the function, we use a return statement to define the value that should be given when the function is used.
+When we call the function, the values we pass to it are assigned to the corresponding parameter variables so that we can use them inside the function (e.g., the variable ``temp`` in this function example).
+Inside the function, we use a return statement to define the value that should be given when the function is used.
 
 Calling functions
 -----------------
 
-2. Let’s try running our function.
+1. Let’s try running our function.
    Calling our self-defined function is no different from calling any other function such as ``print()``.
    You need to call it with its name and send your value to the required parameter(s) inside the parentheses:
 
@@ -48,7 +48,7 @@ Calling functions
        >>> print('Boiling point of water in Fahrenheit:', celsius_to_fahr(100))
        Boiling point of water in Fahrenheit: 212.0
 
-3. Now that we know how to create a function to convert Celsius to Fahrenheit, let's create another function called
+2. Now that we know how to create a function to convert Celsius to Fahrenheit, let's create another function called
    ``kelvin_to_celsius``:
 
    .. code:: python
@@ -56,7 +56,7 @@ Calling functions
        >>> def kelvin_to_celsius(temp_k):
        ...    return temp_k - 273.15
 
-4. And let's use it in a similar way as the earlier one:
+3. And let's use it in a similar way as the earlier one:
 
    .. code:: python
 
@@ -64,7 +64,7 @@ Calling functions
        >>> print('Absolute zero in Celsius:', absolute_zero)
        Absolute zero in Celsius: -273.15
 
-5. What about converting Kelvins to Fahrenheit?
+4. What about converting Kelvins to Fahrenheit?
    We could write out an own formula for it, but we don’t need to.
    Instead, we can compose it by using the two functions we have already created and calling those from the function we are now creating:
 
@@ -78,7 +78,7 @@ Calling functions
        ...    # Return the result
        ...    return temp_f
 
-6. Let's use the function:
+5. Let's use the function:
 
    .. code:: python
 

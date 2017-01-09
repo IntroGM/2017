@@ -138,6 +138,37 @@ using list or array values is an <em>extremely</em> common operation in
 Python.</p>
 </li>
 </ol>
+<div class="topic">
+<p class="topic-title first">Exercise - Putting it together</p>
+<ul class="simple">
+<li>Create a new NumPy array called <code class="docutils literal"><span class="pre">numbers</span></code> that starts at 1 and goes to 100 in increments of 1</li>
+<li>Create a new NumPy array of zeros called <code class="docutils literal"><span class="pre">squared</span></code> that is the same size as <code class="docutils literal"><span class="pre">numbers</span></code></li>
+<li>Using a <code class="docutils literal"><span class="pre">for</span></code> loop, calculate the square of each value in <code class="docutils literal"><span class="pre">numbers</span></code> and store it in the corresponding location in <code class="docutils literal"><span class="pre">squared</span></code></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">Exercise - Let&#8217;s get functional</p>
+<ul class="simple">
+<li>Take your code above and use it to create a new Python function <code class="docutils literal"><span class="pre">square()</span></code> that accepts a NumPy array and returns an array of squared values</li>
+<li>Do you get the expected results when using your function?</li>
+<li>Can you break your function (get it to give an error message)? If so, how?</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">Exercise - Drag race</p>
+<p>IPython has a magic function called <code class="docutils literal"><span class="pre">%timeit</span></code> that you can use to calculate how long it takes a line of code (or program) to execute.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">timeit</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">100000000</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="go">loop, best of 3: 427 ms per loop</span>
+</pre></div>
+</div>
+<p>We can use this now to compare the performance of your new <code class="docutils literal"><span class="pre">square()</span></code> function with calculating the square of values directly in NumPy</p>
+<ul class="simple">
+<li>Create a new NumPy array called <code class="docutils literal"><span class="pre">input</span></code> that goes from 1 to 10 in increments of 0.0000001</li>
+<li>Use <code class="docutils literal"><span class="pre">%timeit</span></code> with your function above to calculate the square of <code class="docutils literal"><span class="pre">input</span></code>, storing the output in an array called <code class="docutils literal"><span class="pre">out1</span></code></li>
+<li>Compare the performance of your function to simply squaring the <code class="docutils literal"><span class="pre">input</span></code> array directly and storing its output as <code class="docutils literal"><span class="pre">out2</span></code></li>
+<li>Can you see any benefits to using NumPy?</li>
+</ul>
+</div>
 </div>
 </div>
 

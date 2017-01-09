@@ -204,3 +204,10 @@ The simplest type of *collection* in Python is a **list**.
        4
 
    Just as expected, there are 4 values in our list and ``len(SampleIDs)`` returns a value of 4.
+
+.. topic:: Exercise - Getting to know lists
+
+   - Create a Python list containing 4 items/values and store it with the variable ``mylist``.
+   - After you have created the list, check its data type, then use the index values to check the data types of the contents of the list.
+   - What kinds of data can you store in lists? Does it all need to be the same data type?
+   
