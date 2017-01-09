@@ -27,5 +27,4 @@ The scripts and script templates referred to in the teaching material can be fou
 at the `GitHub scripts directory`_.
 
 
-.. _`GitHub scripts directory`: https://github.com/IntroGM/introgm.github.io/tree/master/teaching_material/scripts
-
+.. _`GitHub scripts directory`: https://github.com/IntroGM/introgm.github.io/tree/master/teaching_material/docs/source/scripts
