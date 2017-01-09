@@ -2,6 +2,12 @@
 
 The [Helsinki University Geodynamics Group](http://wiki.helsinki.fi/display/HUGG) is offering a one-week short course titled "Introduction to lithospheric geodynamic modelling" for master's/PhD students and interested researchers.
 
+# Course materials
+
+- [Course schedule](https://introgm.github.io/slides/course-overview/#/5)
+- [Lecture slides]()
+- [Lesson materials]()
+
 # Course goals
 
 - Understand the fundamental physical equations solved in numerical geodynamic models, how they work, and how they affect numerical experiments
