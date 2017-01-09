@@ -222,7 +222,7 @@ the ball's elevation like we just did. You can adjust the starting elevation,
 the initial velocity, the number of steps to calculate and the total time
 to calculate.
 
-.. literalinclude:: ../../scripts/ball.py
+.. literalinclude:: scripts/ball.py
    :language: python
 
 
@@ -525,4 +525,4 @@ Here we needed two (second order in one dimension, time).
 
 
 
-.. _falling_sphere.py: ../../../scripts/falling_sphere.py
+.. _falling_sphere.py: _static/falling_sphere.py
