@@ -25,6 +25,7 @@ Resources
 
 - The scripts and script templates referred to in the teaching material can be found
   at the `GitHub scripts directory`_
+- `Random notes and snippets`_ collected during the lessons
 - `Short NumPy tutorial`_
 - `Wolfram Alpha`_: has a simple calculator, plotting, equation solver, etc.
 
@@ -32,4 +33,5 @@ Resources
 .. _`GitHub scripts directory`: https://github.com/IntroGM/introgm.github.io/tree/master/teaching_material/docs/source/scripts
 .. _`Short NumPy tutorial`: https://engineering.ucsb.edu/~shell/che210d/numpy.pdf
 .. _`Wolfram Alpha`: https://www.wolframalpha.com/examples/Math.html
+.. _`Random notes and snippets`: https://hackmd.io/JwZgrAZgphCMUFpgAYBsAjBAWWYsPXQwRGAGMssoyBDAdjoCZGg=#
 
