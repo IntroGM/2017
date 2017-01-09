@@ -17,7 +17,8 @@
         VERSION:     '17.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,7 +27,6 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
     <link rel="next" title="Heat conduction with advection" href="full_heat.html" />
     <link rel="prev" title="Finite differences formulation of the heat conduction problem" href="fd_heat_conduction.html" />
    
@@ -48,14 +48,14 @@
 <h1>Advection<a class="headerlink" href="#advection" title="Permalink to this headline">¶</a></h1>
 <p>The one-dimensional equation desccribing the advection of field <span class="math">\(f\)</span> is</p>
 <div class="math" id="equation-adv-1d">
-<span class="eqno">(1)</span>\[\frac{\partial f}{\partial t} = -v_x \frac{\partial f}{\partial x}\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-adv-1d" title="Permalink to this equation">¶</a></span>\[\frac{\partial f}{\partial t} = -v_x \frac{\partial f}{\partial x}\]</div>
 <p>where <span class="math">\(v_x\)</span> is the velocity. The field <span class="math">\(f\)</span> can be many
 different things, for example: topography, chemical concentration,
 temperature, etc. Despite its very simple appearance,
 its numerical solutions often cause some (or a lot of) trouble.</p>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Discretize equation <a href="#equation-adv-1d">(1)</a> with forward difference
+<p>Discretize equation <a class="reference internal" href="#equation-adv-1d">(1)</a> with forward difference
 in time, and</p>
 <ul class="simple">
 <li>forward,</li>
@@ -128,7 +128,7 @@ for the function value of the next time step</li>
 <li>How many boundary conditions do you need? What are those?</li>
 <li>Create your python script: Either start one from scratch (possibly
 copying material from the previous scripts) or use
-<a class="reference external" href="../../../scripts/advection_upwind_template.py">advection_upwind_template.py</a> to get yourself going.</li>
+<a class="reference external" href="_static/advection_upwind_template.py">advection_upwind_template.py</a> to get yourself going.</li>
 <li>Once your code is working, experiment with different combinations
 of <span class="math">\(\Delta x\)</span>, <span class="math">\(\Delta t\)</span> and <span class="math">\(v_x\)</span> to see
 how they affect the solution.</li>
@@ -153,7 +153,7 @@ how they affect the solution.</li>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/advection.txt"
+      <li><a href="_sources/advection.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -175,11 +175,11 @@ how they affect the solution.</li>
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/advection.txt"
+      <a href="_sources/advection.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

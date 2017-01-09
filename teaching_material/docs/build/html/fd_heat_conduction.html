@@ -17,7 +17,8 @@
         VERSION:     '17.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -26,7 +27,6 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
     <link rel="next" title="Advection" href="advection.html" />
     <link rel="prev" title="Finite differences method introduction" href="finite_differences_1.html" />
    
@@ -49,11 +49,11 @@
 <p>The full heat conduction-advection-production equation seen before
 can be stated in 1D as</p>
 <div class="math" id="equation-heat_eq_full">
-<span class="eqno">(1)</span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)\]</div>
-<p>We can simplify equation <a href="#equation-heat_eq_full">(1)</a> by assuming that there is no
+<span class="eqno">(1)<a class="headerlink" href="#equation-heat_eq_full" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)\]</div>
+<p>We can simplify equation <a class="reference internal" href="#equation-heat_eq_full">(1)</a> by assuming that there is no
 advection of heat and that all the physical properties are constant:</p>
 <div class="math" id="equation-heat_eq_noadv_const">
-<span class="eqno">(2)</span>\[\rho C_p \frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2} + H\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-heat_eq_noadv_const" title="Permalink to this equation">¶</a></span>\[\rho C_p \frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2} + H\]</div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
 <p>How many boundary conditions are needed in order to solve this
@@ -61,7 +61,7 @@ equation (either numerically or analytially)?</p>
 </div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Discretize the equation <a href="#equation-heat_eq_noadv_const">(2)</a>. Use forward difference
+<p>Discretize the equation <a class="reference internal" href="#equation-heat_eq_noadv_const">(2)</a>. Use forward difference
 approximation in time (<span class="math">\(t\)</span>) and central difference approximation
 in space (<span class="math">\(x\)</span>). Note that each variable has now two indices:
 one referring to the grid point in space, and in referring to the
@@ -81,7 +81,7 @@ previous time step.</span></p>
 </div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Implement a python script that solves equation <a href="#equation-heat_eq_noadv_const">(2)</a>
+<p>Implement a python script that solves equation <a class="reference internal" href="#equation-heat_eq_noadv_const">(2)</a>
 using following problem setup:</p>
 <ul class="simple">
 <li>We will model cooling of the oceanic lithosphere</li>
@@ -337,7 +337,7 @@ down the whole sill? How many time steps do you need?</li>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/fd_heat_conduction.txt"
+      <li><a href="_sources/fd_heat_conduction.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -359,11 +359,11 @@ down the whole sill? How many time steps do you need?</li>
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/fd_heat_conduction.txt"
+      <a href="_sources/fd_heat_conduction.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
