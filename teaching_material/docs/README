@@ -1,5 +1,0 @@
-To generate the docs:
-
-  make html
-
-In case of an error, re-try a few times ...
