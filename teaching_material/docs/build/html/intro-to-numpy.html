@@ -67,8 +67,7 @@ If we wanted to calculate the <code class="docutils literal"><span class="pre">s
 </pre></div>
 </div>
 <p>In this case, <code class="docutils literal"><span class="pre">x</span></code> starts at zero and goes to 2 * pi in 10 increments.
-Alternatively, if we wanted to specify the size of the increments for a
-new variable <code class="docutils literal"><span class="pre">x2</span></code>, we could use the <code class="docutils literal"><span class="pre">np.arange()</span></code> function.</p>
+Alternatively, if we wanted to specify the size of the increments for a new variable <code class="docutils literal"><span class="pre">x2</span></code>, we could use the <code class="docutils literal"><span class="pre">np.arange()</span></code> function.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
 <span class="go">[ 0.   0.5  1.   1.5  2.   2.5  3.   3.5  4.   4.5  5.   5.5  6. ]</span>
@@ -76,6 +75,16 @@ new variable <code class="docutils literal"><span class="pre">x2</span></code>, 
 </div>
 <p>In this case, <code class="docutils literal"><span class="pre">x2</span></code> starts at zero and goes to the largest value that is smaller than 2 * pi by increments of 0.5.
 Both of these types of array options are useful in different situations.</p>
+</li>
+<li><p class="first">To calculate the sine function values, we can simply use the <code class="docutils literal"><span class="pre">np.sin()</span></code> function.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sine</span><span class="p">)</span>
+<span class="go">[  0.00000000e+00   6.42787610e-01   9.84807753e-01   8.66025404e-01</span>
+<span class="go">   3.42020143e-01  -3.42020143e-01  -8.66025404e-01  -9.84807753e-01</span>
+<span class="go">  -6.42787610e-01  -2.44929360e-16]</span>
+</pre></div>
+</div>
+<p>Note that performing calculations on NumPy arrays will produce output in an array.</p>
 </li>
 <li><p class="first">As before, we can check out the type of data in our arrays <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">x2</span></code> using the <code class="docutils literal"><span class="pre">type()</span></code> function or the <code class="docutils literal"><span class="pre">%whos</span></code> magic command in IPython.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -116,7 +125,7 @@ The data extracted will start at <code class="docutils literal"><span class="pre
 </div>
 <div class="section" id="useful-functions">
 <h2>Useful functions<a class="headerlink" href="#useful-functions" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic" start="7">
+<ol class="arabic">
 <li><p class="first">Like normal variables, array variables can also be used for various mathematical operations.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">doublex</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">2.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">doublex</span><span class="p">)</span>
@@ -141,7 +150,57 @@ There are many other useful <code class="docutils literal"><span class="pre">nda
 </pre></div>
 </div>
 </li>
+<li><p class="first">Zeros and ones.
+It is pretty common that you will need to create arrays full of zeros or ones to store output from calculations.
+NumPy includes well-named functions for doing this.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">zeros</span><span class="p">)</span>
+<span class="go">[ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ones</span><span class="p">)</span>
+<span class="go">[ 1.  1.  1.  1.  1.  1.  1.  1.  1.  1.]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">A word of caution, and the need for copies of arrays.
+Unlike many data types in Python, assigning an existing NumPy array to a new variable <em>does not</em> create a copy of the array, but rather simply creates pointer to the original array.
+Consider the example below.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[ 5.  5.  5.  5.  5.  5.  5.  5.  5.  5.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">[ 5.  5.  5.  5.  5.  5.  5.  5.  5.  5.]</span>
+</pre></div>
+</div>
+<p>Oh no!
+Here, we can see that even after assigning the values of array <code class="docutils literal"><span class="pre">a</span></code> to array <code class="docutils literal"><span class="pre">b</span></code> changes to <code class="docutils literal"><span class="pre">a</span></code> will affect <code class="docutils literal"><span class="pre">b</span></code>.
+This is because array <code class="docutils literal"><span class="pre">b</span></code> is simply a reference to <code class="docutils literal"><span class="pre">a</span></code>.
+But what if we want to save the values of <code class="docutils literal"><span class="pre">a</span></code> to another array without having them change when <code class="docutils literal"><span class="pre">a</span></code> changes?
+For this we need to use <code class="docutils literal"><span class="pre">np.copy()</span></code>.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[ 8.  8.  8.  8.  8.  8.  8.  8.  8.  8.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">[ 5.  5.  5.  5.  5.  5.  5.  5.  5.  5.]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">np.copy()</span></code> creates a complete copy of the referenced array that is independent of its source.
+This is less efficient, so NumPy defaults to using pointers instead of making complete copies of arrays.</p>
+</li>
 </ol>
+<div class="topic">
+<p class="topic-title first">Exercise - Mean of the cosine</p>
+<ul class="simple">
+<li>Create a NumPy array <code class="docutils literal"><span class="pre">x3</span></code> with a range of -π to +π (inclusive) with 20 increments</li>
+<li>Calculate the cosine of <code class="docutils literal"><span class="pre">x3</span></code> and store it as <code class="docutils literal"><span class="pre">cosine</span></code></li>
+<li>What is the mean value of <code class="docutils literal"><span class="pre">cosine</span></code>?</li>
+<li>Is this value what you expect?</li>
+<li>What happens if you use a larger number of increments for <code class="docutils literal"><span class="pre">x3</span></code>?</li>
+</ul>
+</div>
 </div>
 </div>
 

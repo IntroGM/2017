@@ -104,3 +104,31 @@ Basics of ``for`` loops
    Using the ``len()`` function with ``range()`` to perform calcluations
    using list or array values is an *extremely* common operation in
    Python.
+
+.. topic:: Exercise - Putting it together
+
+   - Create a new NumPy array called ``numbers`` that starts at 1 and goes to 100 in increments of 1
+   - Create a new NumPy array of zeros called ``squared`` that is the same size as ``numbers``
+   - Using a ``for`` loop, calculate the square of each value in ``numbers`` and store it in the corresponding location in ``squared``
+   
+.. topic:: Exercise - Let's get functional
+
+   - Take your code above and use it to create a new Python function ``square()`` that accepts a NumPy array and returns an array of squared values
+   - Do you get the expected results when using your function?
+   - Can you break your function (get it to give an error message)? If so, how?
+
+.. topic:: Exercise - Drag race
+
+   IPython has a magic function called ``%timeit`` that you can use to calculate how long it takes a line of code (or program) to execute.
+
+   .. code:: python
+
+       >>> %timeit np.ones(100000000).mean()
+       loop, best of 3: 427 ms per loop
+
+   We can use this now to compare the performance of your new ``square()`` function with calculating the square of values directly in NumPy
+
+   - Create a new NumPy array called ``input`` that goes from 1 to 10 in increments of 0.0000001
+   - Use ``%timeit`` with your function above to calculate the square of ``input``, storing the output in an array called ``out1``
+   - Compare the performance of your function to simply squaring the ``input`` array directly and storing its output as ``out2``
+   - Can you see any benefits to using NumPy?

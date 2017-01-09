@@ -54,19 +54,56 @@ heat transfer equation where we consider</p>
 <li>variable physical paramaters.</li>
 </ul>
 <div class="math" id="equation-heat-diff-adv-gen">
-<span class="eqno">(1)<a class="headerlink" href="#equation-heat-diff-adv-gen" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-heat-diff-adv-gen" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)\]</div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
 <p>Discretize equation <a class="reference internal" href="#equation-heat-diff-adv-gen">(1)</a>.</p>
-<p>Again, use forward difference in time and central difference in space
+<ul>
+<li><p class="first">Again, use forward difference in time and central difference in space
 for the diffusion term. For the advection term, however, you can
-try using either forward, backward or even central difference. This
-choice is easy to change later once your code is working.</p>
+try using either forward, backward or even central difference.</p>
+<blockquote>
+<div><ul class="simple">
+<li>This choice is easy to change later once your code is working.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Use the <em>staggered grid</em> approach:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Let <span class="math">\(T\)</span> itself together with <span class="math">\(\rho\)</span>, <span class="math">\(C_p\)</span> and
+<span class="math">\(H\)</span> to be defined at the main grid points</li>
+<li>Let <span class="math">\(\alpha\)</span> be defined in the mid-point grid where grid points
+are located half-way between main grid grid points</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Draw a stencil covering grid points in space and in time, for
+the whole model domain (use small grid sizes, e.g. 5 spatial grid points,
+4 time step)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Mark grid points covered by initial and boundary conditions</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Adjust your discretized equation so that the indices for <span class="math">\(\alpha\)</span>
+are correct and has no &#8220;half-indices&#8221;</p>
+</li>
+</ul>
 </div>
 <p>We will implement a crustal scale heat transfer model, where
 we consider the heat diffusion from the moho towards the surface,
-heat generation within the crust, and upward heat advection caused by the removal
-of crustal material at the surface by erosion.</p>
+heat generation within the crust, and upward heat advection caused by the
+removal of crustal material at the surface by erosion.</p>
+<p>Let us construct a model with following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Model size: <span class="math">\(L=35~\mathrm{km}\)</span> (crust)</li>
+<li>Fixed temperature boundary conditions: <span class="math">\(T=T_{\mathrm{surf}}\)</span>
+at <span class="math">\(x=0\)</span>; <span class="math">\(T=T_{\mathrm{bott}}\)</span> at <span class="math">\(x=L\)</span></li>
+</ul>
+</div></blockquote>
 </div>
 
 
