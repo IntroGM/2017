@@ -20,7 +20,7 @@ advection of heat and that all the physical properties are constant:
 .. topic:: Exercise
 
    How many boundary conditions are needed in order to solve this
-   equation (either numerically or analytially)?
+   equation (either numerically or analytically)?
 
 .. topic:: Exercise 
 
