@@ -279,6 +279,6 @@ at the main grid points.
       + How long do you estimate the model needs to run in order to cool
         down the whole sill? How many time steps do you need?
 
-.. _heat_diff_template.py: ../../../scripts/heat_diff_template.py
-.. _heat_diff_var.py: ../../../scripts/heat_diff_var.py
-.. _example_element_multiplication.py: ../../../scripts/example_element-multiplication.py
+.. _heat_diff_template.py: _static/heat_diff_template.py
+.. _heat_diff_var.py: _static/heat_diff_var.py
+.. _example_element_multiplication.py: _static/example_element-multiplication.py
