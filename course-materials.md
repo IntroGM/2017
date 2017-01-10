@@ -9,3 +9,17 @@ Below are links to the sets of lecture slides and websites for the IntroGM cours
 | 1.2 | Key physical processes and concepts | | [PDF](https://introgm.github.io/slides/key-physical-processes-and-concepts/02-Key-physical-processes-and-concepts.pdf)
 | 1.3 | Solving equations | | [PDF](https://introgm.github.io/slides/solving-equations/03-Solving-equations.pdf) |
 | 1.4 | Python/computing essentials | [Web tutorial](https://introgm.github.io/lessons/python_essentials.html) | |
+
+
+|-----------------+------------+-----------------+----------------|
+| Default aligned |Left aligned| Center aligned  | Right aligned  |
+|-----------------|:-----------|:---------------:|---------------:|
+| First body part |Second cell | Third cell      | fourth cell    |
+| Second line     |foo         | **strong**      | baz            |
+| Third line      |quux        | baz             | bar            |
+|-----------------+------------+-----------------+----------------|
+| Second body     |            |                 |                |
+| 2 line          |            |                 |                |
+|=================+============+=================+================|
+| Footer row      |            |                 |                |
+|-----------------+------------+-----------------+----------------|
