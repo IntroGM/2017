@@ -1,6 +1,7 @@
-#Introduction to Lithospheric Geodynamic Modelling course materials
+Introduction to Lithospheric Geodynamic Modelling course materials
+==================================================================
 
-Below are links to the sets of lecture slides and websites for the IntroGM course
+Below are links to the sets of lecture slides and websites for the IntroGM course.
 
 |-----------+-------------------------------------+-----+-----|
 | Day 1     | Topic                               |     |     |
@@ -10,19 +11,19 @@ Below are links to the sets of lecture slides and websites for the IntroGM cours
 | 1.3       | Solving equations                   |     | [PDF](https://introgm.github.io/slides/solving-equations/03-Solving-equations.pdf) |
 | 1.4       | Python/computing essentials         | [Web tutorial](https://introgm.github.io/lessons/python_essentials.html) |     |
 |-----------+-------------------------------------+-----+-----|
-| **Day 2** | **Topic**                           |     |     |
+| **Day 2** |                                     |     |     |
 |-----------|-------------------------------------|-----|-----|
 |           |                                     |     |     |
 |-----------+-------------------------------------+-----+-----|
-| **Day 3** | **Topic**                           |     |     |
+| **Day 3** |                                     |     |     |
 |-----------|-------------------------------------|-----|-----|
 |           |                                     |     |     |
 |-----------+-------------------------------------+-----+-----|
-| **Day 4** | **Topic**                           |     |     |
+| **Day 4** |                                     |     |     |
 |-----------|-------------------------------------|-----|-----|
 |           |                                     |     |     |
 |-----------+-------------------------------------+-----+-----|
-| **Day 5** | **Topic**                           |     |     |
+| **Day 5** |                                     |     |     |
 |-----------|-------------------------------------|-----|-----|
 |           |                                     |     |     |
 |-----------+-------------------------------------+-----+-----|
