@@ -226,6 +226,16 @@ at the main grid points.
    1. Implement the missing lines of code at l. 96 to calculate
       the new temperature values.
 
+      Use the following discretized version of heat equation
+
+      .. math::
+         T_n^{i} = 
+                        \left( 
+                              \alpha_n \frac{T_{n+1}^{i-1} - T_n^{i-1}}{\Delta x^2} - \alpha_{n-1} \frac{T_n^{i-1} - T_{n-1}^{i-1}}{\Delta x^2} + H_n
+                        \right)
+                        \frac{\Delta t}{\rho_n C_{p,n}}
+                     + T_n^{i-1}
+
    2. Modify the script for a new problem setup:
 
       + Instead of one layer crust, specify an upper and a lower crust
