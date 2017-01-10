@@ -38,5 +38,5 @@ Resources
 
 References
 ==========
-The presentations web presentations linked from this page use the [reveal.js html presentation framework](https://github.com/hakimel/reveal.js/).
+The web presentations linked from this page use the [reveal.js html presentation framework](https://github.com/hakimel/reveal.js/).
 We setup the presentations following [these instructions](https://www.chenhuijing.com/blog/revealjs-and-github-pages/#🎹) about using [reveal.js](https://github.com/hakimel/reveal.js/) with [GitHub Pages](https://pages.github.com/).
