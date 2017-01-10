@@ -3,7 +3,7 @@
 Advection
 =========
 
-The one-dimensional equation desccribing the advection of field :math:`f` is
+The one-dimensional equation describing the advection of field :math:`f` is
 
 .. math::
    \frac{\partial f}{\partial t} = -v_x \frac{\partial f}{\partial x}
@@ -92,12 +92,16 @@ its numerical solutions often cause some (or a lot of) trouble.
    1. Rearrange the discretized equation so that you get an expression 
       for the function value of the next time step
    2. How many boundary conditions do you need? What are those?
-   3. Create your python script: Either start one from scratch (possibly
-      copying material from the previous scripts) or use 
-      advection_upwind_template.py_ to get yourself going.
+   3. Create your python script: Either start one from scratch using a 
+      provided template (advection_upwind_template.py_) or use
+      advection_upwind.py_ where you need to write the missing line
+      within the for loops.
    4. Once your code is working, experiment with different combinations
       of :math:`\Delta x`, :math:`\Delta t` and :math:`v_x` to see
       how they affect the solution.
 
+.. _advection_upwind.py: _static/advection_upwind.py
 .. _advection_upwind_template.py: _static/advection_upwind_template.py
 
+---
+^^^

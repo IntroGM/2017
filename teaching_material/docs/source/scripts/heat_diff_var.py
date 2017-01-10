@@ -68,7 +68,6 @@ alpha[idx_crust] = 2.5
 alpha[idx_mantle] = 4.0
 #########################################
 
-
 # Calculate the spacing between time steps
 dt = totaltime / (nt-1)
 
@@ -89,11 +88,12 @@ for it in range(1, nt):
 	T[0, it] = T_surface
 	T[nx-1, it] = T_bottom
 
-
 	## Implement here the code where you loop over 
 	## each (spatial) grid point and calculate the 
-	## new temperature values based on the old ones.
-	...
+	## new temperature values at (it), based on the old 
+	## ones at (it-1).
+	for ix in range(1, nx-1):
+		T[it, ix] = ... # EDITME
 
 	# Calculate the time in seconds at this timestep
 	time[it] = time[it-1] + dt
