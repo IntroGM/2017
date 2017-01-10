@@ -35,3 +35,8 @@ Resources
 - [Random notes and snippets collected during the lessons](https://hackmd.io/JwZgrAZgphCMUFpgAYBsAjBAWWYsPXQwRGAGMssoyBDAdjoCZGg=#)
 - [Short NumPy tutorial](https://engineering.ucsb.edu/~shell/che210d/numpy.pdf)
 - [Wolfram Alpha](https://www.wolframalpha.com/examples/Math.html) has a simple calculator, plotting, equation solver, etc.
+
+References
+==========
+The presentations web presentations linked from this page use the [reveal.js html presentation framework](https://github.com/hakimel/reveal.js/).
+We setup the presentations following [these instructions](https://www.chenhuijing.com/blog/revealjs-and-github-pages/#🎹) about using [reveal.js](https://github.com/hakimel/reveal.js/) with [GitHub Pages](https://pages.github.com/).
