@@ -28,3 +28,10 @@ Below are links to the sets of lecture slides and websites for the IntroGM cours
 |-----------|-------------------------------------|:-------------:|:---------:|
 |           |                                     |               |           |
 |-----------+-------------------------------------+---------------+-----------|
+
+Resources
+=========
+- The scripts and script templates referred to in the teaching material can be found in the [GitHub scripts directory](https://github.com/IntroGM/introgm.github.io/tree/master/teaching_material/docs/source/scripts)
+- [Random notes and snippets collected during the lessons](https://hackmd.io/JwZgrAZgphCMUFpgAYBsAjBAWWYsPXQwRGAGMssoyBDAdjoCZGg=#)
+- [Short NumPy tutorial](https://engineering.ucsb.edu/~shell/che210d/numpy.pdf)
+- [Wolfram Alpha](https://www.wolframalpha.com/examples/Math.html) has a simple calculator, plotting, equation solver, etc.
