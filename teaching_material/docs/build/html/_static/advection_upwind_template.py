@@ -67,5 +67,8 @@ for ...
 # This plots the last time step calculated
 plt.plot(x, f_orig, '.-g')
 plt.plot(x, f, '.-g')
+frange = np.max(f) - np.min(f)
+axes = plt.gca()
+axes.set_ylim([np.min(f)-0.1*frange, np.max(f)+0.1*frange])
 plt.show()
 

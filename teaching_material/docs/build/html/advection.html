@@ -46,7 +46,7 @@
             
   <div class="section" id="advection">
 <h1>Advection<a class="headerlink" href="#advection" title="Permalink to this headline">¶</a></h1>
-<p>The one-dimensional equation desccribing the advection of field <span class="math">\(f\)</span> is</p>
+<p>The one-dimensional equation describing the advection of field <span class="math">\(f\)</span> is</p>
 <div class="math" id="equation-adv-1d">
 <span class="eqno">(1)<a class="headerlink" href="#equation-adv-1d" title="Permalink to this equation">¶</a></span>\[\frac{\partial f}{\partial t} = -v_x \frac{\partial f}{\partial x}\]</div>
 <p>where <span class="math">\(v_x\)</span> is the velocity. The field <span class="math">\(f\)</span> can be many
@@ -63,12 +63,12 @@ in time, and</p>
 <li>backward difference in space.</li>
 </ul>
 </div>
-<div class="figure" id="id1">
+<div class="figure" id="id2">
 <img alt="_images/advection.svg" src="_images/advection.svg" /><p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Illustration of the advection differential equation. The gradient
 of the function determines whether the function value
 will increase or decrease due to the advection.</span></p>
 </div>
-<div class="figure" id="id2">
+<div class="figure" id="id3">
 <img alt="_images/advection_fd_upwind.svg" src="_images/advection_fd_upwind.svg" /><p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Illustration of the <em>upwind</em> FD advection solution
 with exact results caused by the right combination
 of time step, grid size and velocity. The value
@@ -88,7 +88,7 @@ uses the gradient leeward, on the opposite side from
 the incoming flux.</li>
 </ul>
 </div>
-<div class="figure" id="id3">
+<div class="figure" id="id4">
 <span id="fig-adv-fd-upw-half"></span><img alt="_images/advection_fd_upwind_halfstep.svg" src="_images/advection_fd_upwind_halfstep.svg" /><p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Illustration of the upwind FD advection solution
 in a typical case where <span class="math">\(\frac{v_x\Delta t}{\Delta x} \ne 1\)</span>.
 Effectively, a linear interpolation between grid points
@@ -126,13 +126,17 @@ of the <span class="math">\(x\)</span> axis. We will run the model for 8 (second
 <li>Rearrange the discretized equation so that you get an expression
 for the function value of the next time step</li>
 <li>How many boundary conditions do you need? What are those?</li>
-<li>Create your python script: Either start one from scratch (possibly
-copying material from the previous scripts) or use
-<a class="reference external" href="_static/advection_upwind_template.py">advection_upwind_template.py</a> to get yourself going.</li>
+<li>Create your python script: Either start one from scratch using a
+provided template (<a class="reference external" href="_static/advection_upwind_template.py">advection_upwind_template.py</a>) or use
+<a class="reference external" href="_static/advection_upwind.py">advection_upwind.py</a> where you need to write the missing line
+within the for loops.</li>
 <li>Once your code is working, experiment with different combinations
 of <span class="math">\(\Delta x\)</span>, <span class="math">\(\Delta t\)</span> and <span class="math">\(v_x\)</span> to see
 how they affect the solution.</li>
 </ol>
+</div>
+<div class="section" id="id1">
+<h2>&#8212;<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -141,7 +145,15 @@ how they affect the solution.</li>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Advection</a><ul>
+<li><a class="reference internal" href="#id1">&#8212;</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>

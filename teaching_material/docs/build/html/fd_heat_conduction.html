@@ -91,13 +91,14 @@ have a constant temperature of <span class="math">\(T_{\mathrm{ini}} = 1350\)</s
 the bottom of the lithosphere (<span class="math">\(x=100~\mathrm{km}\)</span>).</li>
 <li>The boundary conditions are:<ul>
 <li><span class="math">\(T_{\mathrm{surf}} = 0\)</span> at <span class="math">\(x=0\)</span></li>
-<li><span class="math">\(T_{\mathrm{bott}} = 0\)</span> at <span class="math">\(x=100\)</span></li>
+<li><span class="math">\(T_{\mathrm{bott}} = 1350\)</span> at <span class="math">\(x=100\)</span></li>
 </ul>
 </li>
 <li>The whole lithosphere has constant physical properties:<ul>
 <li>Heat capacity <span class="math">\(C_p = 1250~\mathrm{J kg^{-1} K^{-1}}\)</span></li>
 <li>Density <span class="math">\(\rho = 3300~\mathrm{kg m^{-3}}\)</span></li>
 <li>Heat conductivity <span class="math">\(\alpha = 4.0~\mathrm{W m^{-1} K^{-1}}\)</span></li>
+<li>Heat production <span class="math">\(H=0.0~\mathrm{W kg^-1}\)</span></li>
 </ul>
 </li>
 </ul>
@@ -109,17 +110,16 @@ and six time steps. Number the grid point from zero to five
 (in both indices). Mark the grid points that are governed
 by the boundary or initial conditions, and those that will
 be calculated.</li>
-<li>Copy the given code template <a class="reference external" href="_static/heat_diff_template.py">heat_diff_template.py</a> to
-to <code class="code docutils literal"><span class="pre">my_heat_diff.py</span></code> (or something similar) and
-implement your own code. The structure of the code is already
-given, but a lot of code is missing in places marked
-with <code class="code docutils literal"><span class="pre">...</span></code>. Go through the code reading the comments
+<li>Modify the given code template <a class="reference external" href="_static/heat_diff.py">heat_diff.py</a> and
+implement missing parts. The structure of the script is already
+given, but a some code is missing in places marked
+with <code class="code docutils literal"><span class="pre">...</span> <span class="pre">#</span> <span class="pre">EDITME</span></code>. Go through the code reading the comments
 and instructions and implement the missing parts.<ul>
 <li>Note that the code template uses &#8216;ix&#8217; for spatial index
 and &#8216;it&#8217; for temporal index (short for &#8220;index-x&#8221; and
 &#8220;index-time&#8221;).</li>
 <li>Start with six time steps and six grid points in space,
-run the model for ten million years. You can vary these
+run the model for six million years. You can vary these
 once the code works.</li>
 </ul>
 </li>

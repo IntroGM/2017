@@ -61,13 +61,14 @@ stencil of the problem.
    - The boundary conditions are:
 
      + :math:`T_{\mathrm{surf}} = 0` at :math:`x=0`
-     + :math:`T_{\mathrm{bott}} = 0` at :math:`x=100`
+     + :math:`T_{\mathrm{bott}} = 1350` at :math:`x=100`
 
    - The whole lithosphere has constant physical properties:
 
      + Heat capacity :math:`C_p = 1250~\mathrm{J kg^{-1} K^{-1}}`
      + Density :math:`\rho = 3300~\mathrm{kg m^{-3}}`
      + Heat conductivity :math:`\alpha = 4.0~\mathrm{W m^{-1} K^{-1}}`
+     + Heat production :math:`H=0.0~\mathrm{W kg^-1}`
 
    1. Draw a sketch of the problem setup
    2. Draw a stencil that illustrates the grids in space and time:
@@ -76,18 +77,17 @@ stencil of the problem.
       (in both indices). Mark the grid points that are governed
       by the boundary or initial conditions, and those that will
       be calculated. 
-   3. Copy the given code template heat_diff_template.py_ to
-      to :code:`my_heat_diff.py` (or something similar) and
-      implement your own code. The structure of the code is already
-      given, but a lot of code is missing in places marked
-      with :code:`...`. Go through the code reading the comments 
+   3. Modify the given code template heat_diff.py_ and
+      implement missing parts. The structure of the script is already
+      given, but a some code is missing in places marked
+      with :code:`... # EDITME`. Go through the code reading the comments 
       and instructions and implement the missing parts.
 
       + Note that the code template uses 'ix' for spatial index
         and 'it' for temporal index (short for "index-x" and
         "index-time").
       + Start with six time steps and six grid points in space,
-        run the model for ten million years. You can vary these
+        run the model for six million years. You can vary these
         once the code works.
 
 .. topic:: Exercise
@@ -279,6 +279,6 @@ at the main grid points.
       + How long do you estimate the model needs to run in order to cool
         down the whole sill? How many time steps do you need?
 
-.. _heat_diff_template.py: _static/heat_diff_template.py
+.. _heat_diff.py: _static/heat_diff.py
 .. _heat_diff_var.py: _static/heat_diff_var.py
 .. _example_element_multiplication.py: _static/example_element-multiplication.py

@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.special import erf
+import analytical_solutions
 
 ### heat_diff_1.py
 ###
@@ -23,8 +22,8 @@ T_surface = 0      # boundary condition at the surface
 T_bottom  = 1350   # boundary condition at the bottom
 
 L         = 100e3  # height of the rock column, meters
-nx        = 6     # number of grid points in space
-nt        = 2000    # number of grid points in time
+nx        = 6      # number of grid points in space
+nt        = 2000   # number of grid points in time
 totaltime = 60*60*24*365.25*10e6 # total time to calculate, in seconds
 #####################
 
@@ -36,35 +35,38 @@ dt = totaltime / (nt-1)
 T = np.zeros((nx,nt)) # creates an 2D array where location varies along rows
                       # and time along columns
 T[:, 0] = T_ini       # set the initial condition
-T[0, :] = T_surface   # set the upper boundary condition
-T[nx-1, :] = T_bottom # set the lower boundary condition
-
-# Generate an array of time values for plotting purposes
-time = np.zeros(nt)
-time[0] = 0
 
 # Generate an array of depth values for plotting purposes
 x = np.linspace(0, L, nx)
 
+# Generate an array of time values for plotting purposes
+time = np.linspace(0, totaltime, nt)
+
 # Loop over every time step, always calculating the new temperature 
-# at each depth
+# at each depth.
 # The first (T[0,:]) and last (T[nx,:]) rows are skipped
 # since these values are known from the boundary condition.
-# The first columnt (T[:,0]) is also skipped since these 
+# The first column (T[:,0]) is also skipped since these 
 # values are known from the initial condition
 for it in range(1, nt):
-	for ix in range(1, nx-1):
-		T[ix, it] = (alpha * (T[ix+1, it-1] - 2*T[ix, it-1] + T[ix-1, it-1]) / dx**2) * dt / (rho*Cp) + T[ix, it-1]
+	for ix in range(0, nx):
+		if ix == 0:
+			# This is a surface grid point
+			T[ix, it] = T_surface
+		elif ix == nx-1:
+			# This is the last (spatial) grid point
+			# at the bottom of the lithosphere
+			T[ix, it] = T_bottom
+		else:
+			# All the other grid points.
+			T[ix, it] = (alpha * (T[ix+1, it-1] - 2*T[ix, it-1] + T[ix-1, it-1]) / dx**2) * dt / (rho*Cp) + T[ix, it-1]
 
-	# Calculate the time in seconds at this timestep
-	time[it] = time[it-1] + dt
 
 
 
 ### Calculate analytical solution, at the end of calculations
 
-# Initialize arrays to hold the depth values
-# for the analytical solution. We calculate the analytical
+# We calculate the analytical
 # solution at 200 points for plotting.
 x_analytical = np.linspace(0, (nx-1)*dx, 200)
 
@@ -72,7 +74,7 @@ x_analytical = np.linspace(0, (nx-1)*dx, 200)
 kappa = alpha / (Cp*rho)
 
 # Calculate the analytical solution
-T_analytical = (T_bottom - T_surface)*erf(x_analytical / (2*np.sqrt(kappa*time[nt-1]))) + T_surface
+T_analytical = analytical_solutions.oceanic_cooling(x_analytical, time[nt-1], alpha, rho, Cp, T_surface, T_bottom)
 
 
 ### Create the plots for numerical and analytical solutions
