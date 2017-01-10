@@ -246,6 +246,14 @@ very similar to the template of the previous coding exercise.</p>
 <ol class="arabic">
 <li><p class="first">Implement the missing lines of code at l. 96 to calculate
 the new temperature values.</p>
+<p>Use the following discretized version of heat equation</p>
+<div class="math">
+\[T_n^{i} =
+               \left(
+                     \alpha_n \frac{T_{n+1}^{i-1} - T_n^{i-1}}{\Delta x^2} - \alpha_{n-1} \frac{T_n^{i-1} - T_{n-1}^{i-1}}{\Delta x^2} + H_n
+               \right)
+               \frac{\Delta t}{\rho_n C_{p,n}}
+            + T_n^{i-1}\]</div>
 </li>
 <li><p class="first">Modify the script for a new problem setup:</p>
 <ul class="simple">

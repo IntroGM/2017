@@ -27,6 +27,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Finite difference method, part II" href="fd_part2.html" />
     <link rel="prev" title="Advection" href="advection.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -54,56 +55,50 @@ heat transfer equation where we consider</p>
 <li>variable physical paramaters.</li>
 </ul>
 <div class="math" id="equation-heat-diff-adv-gen">
-<span class="eqno">(1)<a class="headerlink" href="#equation-heat-diff-adv-gen" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-heat-diff-adv-gen" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H\]</div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
 <p>Discretize equation <a class="reference internal" href="#equation-heat-diff-adv-gen">(1)</a>.</p>
-<ul>
-<li><p class="first">Again, use forward difference in time and central difference in space
+<p>Again, use forward difference in time and central difference in space
 for the diffusion term. For the advection term, however, you can
-try using either forward, backward or even central difference.</p>
-<blockquote>
-<div><ul class="simple">
-<li>This choice is easy to change later once your code is working.</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Use the <em>staggered grid</em> approach:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Let <span class="math">\(T\)</span> itself together with <span class="math">\(\rho\)</span>, <span class="math">\(C_p\)</span> and
-<span class="math">\(H\)</span> to be defined at the main grid points</li>
-<li>Let <span class="math">\(\alpha\)</span> be defined in the mid-point grid where grid points
-are located half-way between main grid grid points</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Draw a stencil covering grid points in space and in time, for
-the whole model domain (use small grid sizes, e.g. 5 spatial grid points,
-4 time step)</p>
-<blockquote>
-<div><ul class="simple">
-<li>Mark grid points covered by initial and boundary conditions</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Adjust your discretized equation so that the indices for <span class="math">\(\alpha\)</span>
-are correct and has no &#8220;half-indices&#8221;</p>
-</li>
-</ul>
+try using either forward, backward or even central difference. This
+choice is easy to change later once your code is working.</p>
 </div>
 <p>We will implement a crustal scale heat transfer model, where
 we consider the heat diffusion from the moho towards the surface,
-heat generation within the crust, and upward heat advection caused by the
-removal of crustal material at the surface by erosion.</p>
-<p>Let us construct a model with following parameters:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Model size: <span class="math">\(L=35~\mathrm{km}\)</span> (crust)</li>
-<li>Fixed temperature boundary conditions: <span class="math">\(T=T_{\mathrm{surf}}\)</span>
-at <span class="math">\(x=0\)</span>; <span class="math">\(T=T_{\mathrm{bott}}\)</span> at <span class="math">\(x=L\)</span></li>
-</ul>
-</div></blockquote>
+heat generation within the crust, and upward heat advection caused by the removal
+of crustal material at the surface by erosion.</p>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<p>Take your solution to the one of the previous exercises where
+we solved the heat equation with variable physical parameters but
+without heat advection (<a class="reference external" href="_static/heat_diff_var.py">heat_diff_var.py</a> or start from the
+already working script <a class="reference external" href="_static/heat_diff_var_answer.py">heat_diff_var_answer.py</a>). Save this file with
+a new name (e.g. <code class="code docutils literal"><span class="pre">heat_diff_adv.py</span></code>).</p>
+<p>Modify the script to include heat advection:</p>
+<ol class="arabic">
+<li><p class="first">Define a variable <code class="code docutils literal"><span class="pre">vx</span></code> that holds the advection velocity.</p>
+</li>
+<li><p class="first">Modify the line <code class="code docutils literal"><span class="pre">T[ix,</span> <span class="pre">it]</span> <span class="pre">=</span> <span class="pre">...</span></code> so that you include the
+advection term. Use the following discretized version of the
+equation</p>
+<div class="math">
+\[T_n^{i} = \left(
+               \left.
+               \left(
+                     \alpha_n \frac{T_{n+1}^{i-1} - T_n^{i-1}}{\Delta x^2} - \alpha_{n-1} \frac{T_n^{i-1} - T_{n-1}^{i-1}}{\Delta x^2} + H_n
+               \right)
+               \middle/
+               \rho_n C_{p,n}
+               \right.
+               - v_x \frac{T_{n+1}^{i-1} - T_{n-1}^{i-1}}{2 \Delta x}
+            \right) \Delta t + T_n^{i-1}\]</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h2>&#8211;<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -111,11 +106,20 @@ at <span class="math">\(x=0\)</span>; <span class="math">\(T=T_{\mathrm{bott}}\)
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Heat conduction with advection</a><ul>
+<li><a class="reference internal" href="#id1">&#8211;</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="advection.html" title="previous chapter">Advection</a></li>
+      <li>Next: <a href="fd_part2.html" title="next chapter">Finite difference method, part II</a></li>
   </ul></li>
 </ul>
 </div>
