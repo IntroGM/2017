@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Heat conduction with advection &#8212; IntroGM 17.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '17.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Advection" href="advection.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="heat-conduction-with-advection">
+<h1>Heat conduction with advection<a class="headerlink" href="#heat-conduction-with-advection" title="Permalink to this headline">¶</a></h1>
+<p>We now have all the tools to implement a &#8220;full&#8221; one-dimensional
+heat transfer equation where we consider</p>
+<ul class="simple">
+<li>heat conduction,</li>
+<li>heat advection,</li>
+<li>heat generation, and</li>
+<li>variable physical paramaters.</li>
+</ul>
+<div class="math" id="equation-heat-diff-adv-gen">
+<span class="eqno">(1)<a class="headerlink" href="#equation-heat-diff-adv-gen" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H(x)\]</div>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<p>Discretize equation <a class="reference internal" href="#equation-heat-diff-adv-gen">(1)</a>.</p>
+<ul>
+<li><p class="first">Again, use forward difference in time and central difference in space
+for the diffusion term. For the advection term, however, you can
+try using either forward, backward or even central difference.</p>
+<blockquote>
+<div><ul class="simple">
+<li>This choice is easy to change later once your code is working.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Use the <em>staggered grid</em> approach:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Let <span class="math">\(T\)</span> itself together with <span class="math">\(\rho\)</span>, <span class="math">\(C_p\)</span> and
+<span class="math">\(H\)</span> to be defined at the main grid points</li>
+<li>Let <span class="math">\(\alpha\)</span> be defined in the mid-point grid where grid points
+are located half-way between main grid grid points</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Draw a stencil covering grid points in space and in time, for
+the whole model domain (use small grid sizes, e.g. 5 spatial grid points,
+4 time step)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Mark grid points covered by initial and boundary conditions</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Adjust your discretized equation so that the indices for <span class="math">\(\alpha\)</span>
+are correct and has no &#8220;half-indices&#8221;</p>
+</li>
+</ul>
+</div>
+<p>We will implement a crustal scale heat transfer model, where
+we consider the heat diffusion from the moho towards the surface,
+heat generation within the crust, and upward heat advection caused by the
+removal of crustal material at the surface by erosion.</p>
+<p>Let us construct a model with following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Model size: <span class="math">\(L=35~\mathrm{km}\)</span> (crust)</li>
+<li>Fixed temperature boundary conditions: <span class="math">\(T=T_{\mathrm{surf}}\)</span>
+at <span class="math">\(x=0\)</span>; <span class="math">\(T=T_{\mathrm{bott}}\)</span> at <span class="math">\(x=L\)</span></li>
+</ul>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="advection.html" title="previous chapter">Advection</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/full_heat.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Lars Kaislaniemi and David Whipp.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/full_heat.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
