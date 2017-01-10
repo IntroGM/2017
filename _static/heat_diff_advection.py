@@ -73,8 +73,7 @@ T_ini = T_surface + x * (T_bottom-T_surface)/L
 T[:] = T_ini[:]
 
 # Generate an array of time values for plotting purposes
-time = np.zeros(nt)
-time[0] = 0
+time = np.arange(nt) * dt
 
 # Loop over every time step, always calculating the new temperature 
 # at each depth, and then advecting the temperature field.
@@ -89,9 +88,6 @@ for it in range(1, nt):
 	# Calculate internal nodes
 	for ix in range(1, nx-1):
 		T[ix] = ( ( alpha * (Tprev[ix+1] - 2*Tprev[ix] + Tprev[ix-1]) ) / dx**2 + H ) * dt / (rho * Cp) - vx * (Tprev[ix] - Tprev[ix-1]) * dt / (dx) + Tprev[ix] 
-
-	# Calculate the time in seconds at this timestep
-	time[it] = time[it-1] + dt
 
 
 # Calculate analytical solution
