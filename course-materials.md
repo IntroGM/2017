@@ -19,7 +19,9 @@ If you prefer, you are welcome to use the [Table of Contents for the web lessons
 |-----------+-------------------------------------+---------------+-----------|
 | **Day 3** |                                     |               |           |
 |-----------|-------------------------------------|:-------------:|:---------:|
-|           |                                     |               |           |
+| 3.1       | Heat conduction in 1D (ctd.)        | [Web lesson](https://introgm.github.io/lessons/fd_heat_conduction.html) |           |
+| 3.2       | Testing your code and benchmarking  | [Web lesson](https://introgm.github.io/lessons/testing-your-code.html) |           |
+| 3.3       | Advection of a field in 1D          | [Web lesson](https://introgm.github.io/lessons/advection.html) |           |
 |-----------+-------------------------------------+---------------+-----------|
 | **Day 4** |                                     |               |           |
 |-----------|-------------------------------------|:-------------:|:---------:|
