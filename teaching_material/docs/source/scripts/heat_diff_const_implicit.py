@@ -2,6 +2,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 np.set_printoptions(precision=9, suppress=True, linewidth=120)
 
 
@@ -62,38 +63,39 @@ for it in range(1,nt):
 	# step to the next one, this only needs to be done once.
 	# Here we do it every time step.
 	M[:, :] = 0 # set all values to zero
-	for ix in range(1, nx-1):
-		# Set the matrix coefficients for the inner nodes.
+	for ix in range(0, nx):
+		if ix == 0:
+			# This is the node at surface, use T_surf
+			M[ix, ix] = ... # EDITME
+			rhs[ix] = ... # EDITME
+		elif ix == nx-1:
+			# This is the node at surface, use T_bott
+			M[ix, ix] = ... # EDITME
+			rhs[ix] = ... # EDITME
+		else:
+			# Set the matrix coefficients for the inner nodes,
+			# the ones not at the boundary
 
-		# We are calculating a value for node ix, so the 
-		# first index (the row of the matrix) is ix.
-		# The second index (the column of the matrix)
-		# is the index of the T to which the coefficient 
-		# belongs to.
+			# First calculate the coefficients:
+			A = ... # EDITME
+			B = ... # EDITME
 
-		M[ix, ix-1] = ... # EDITME  
-		M[ix, ix  ] = ... # EDITME  
-		M[ix, ix+1] = ... # EDITME  
+			# We are calculating a value for node ix, so the 
+			# first index (the row of the matrix) is ix.
+			# The second index (the column of the matrix)
+			# is the index of the T to which the coefficient 
+			# belongs to
 
-		# The right-hand side vector needs to be updated
-		# every time step since it contains values
-		# that change from time step to time step (T[ix, it-1]).
-		
-		# Calculate the value of the right-hand side vector:
-		rhs[ix] = ... # EDITME
+			M[ix, ix-1] = ... # EDITME
+			M[ix, ix  ] = ... # EDITME    
+			M[ix, ix+1] = ... # EDITME     
 
-	# Set the matrix coefficients for the the boundaries:
-	ix = 0
-	M[ix, ix] = 1 
-	rhs[ix] = T_surf     
-
-	ix = nx-1 
-	M[ix, ix] = 1 
-	rhs[ix] = T_bott    
-
-	# Print the coefficient matrix
-	print("Time step", it, ", coefficient matrix M is:")
-	print(M, "\n")
+			# The right-hand side vector needs to be updated
+			# every time step since it contains values
+			# that change from time step to time step (T[ix, it-1]).
+			
+			# Calculate the value of the right-hand side vector:
+			rhs[ix] = ... # EDITME
 
 	# Solve the system of equations
 	Tnew = np.linalg.solve(M, rhs)
@@ -101,7 +103,12 @@ for it in range(1,nt):
 	# Copy the solution to the temperature array
 	T[:, it] = Tnew[:]
 	
-# Plot the last time steps
+# Plot the last time step
 plt.plot(T[:, nt-1], -x, '.--')
+plt.show()
+
+# Plot all time steps
+plt.imshow(T, extent=(x.min()/1e3, x.max()/1e3, t.max()/SECINMYR, t.min()/SECINMYR), interpolation='nearest', cmap=cm.viridis, aspect='auto')
+plt.colorbar()
 plt.show()
 

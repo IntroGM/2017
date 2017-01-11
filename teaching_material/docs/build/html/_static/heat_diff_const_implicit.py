@@ -2,13 +2,15 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from printarr import printarr
+import matplotlib.cm as cm
+np.set_printoptions(precision=9, suppress=True, linewidth=120)
 
-### heat_diff_implicit.py
+
+### heat_diff_const_implicit.py
 ###
 ### Script to calculate the finite differences
 ### solution for the 1D heat diffusion & production
-### problem with varying physical properties.
+### problem with constant physical properties.
 ### 
 ### Implicit.
 
@@ -19,7 +21,7 @@ SECINMYR = 1e6*SECINYR
 #####################################
 #### Define the model parameters ####
 #####################################
-nt = 2  # num of timesteps
+nt = 4  # num of timesteps
 nx = 5  # num of (spatial) grid points
 totaltime = 100*SECINMYR # total time to run
 L = 100e3 # size of the model (lithosphere thickness)
@@ -34,10 +36,6 @@ t = np.linspace(0, totaltime, nt)
 dx = L/(nx-1)
 dt = totaltime/(nt-1)
 
-# Generate the "mid-point" grid for heat conductivity values 
-# between the main grid points. 
-x_mp = x + 0.5*dx
-
 # Set the (constant) physical parameters
 rho = 3300
 Cp = 1250
@@ -46,8 +44,9 @@ alpha = 2.5
 
 # Generate the array to hold the temperature field
 # and initialize it with the initial condition
-T = np.ones(nx) * T_ini  # holds T for current time step
-T_old = np.zeros(nx)     # holds T for the previous time step
+T = np.zeros((nx, nt))
+# Set temperature to T_ini in all spatial nodes at first time step (it==0)
+T[:, 0] = T_ini
 
 
 # Create the matrix and the right hand side vector
@@ -56,47 +55,60 @@ nf = nx     # degrees of freedom, i.e. number of unknowns (i.e. number of equati
 M = np.zeros((nf, nf))
 rhs = np.zeros(nf)
 
-
-for it in range(nt):
-	# New time step, copy the current time step to be
-	# the previous one
-	T_old = np.copy(T)
-
-	M[:, :] = 0
+# Loop over the time steps, skipping the first one which is defined by initial condition
+for it in range(1,nt):
 
 	# Generate the left hand side matrix for the system fo equations
 	# Note that if physical fields are kept constant from one time
 	# step to the next one, this only needs to be done once.
 	# Here we do it every time step.
-	for ix in range(1, nx-1):
-		# Set the matrix coefficients for the inner nodes
-		M[ix, ix-1] = -alpha/dx**2
-		M[ix, ix  ] = rho*Cp/dt + alpha/dx**2 + alpha/dx**2
-		M[ix, ix+1] = -alpha/dx**2
-		rhs[ix] = T_old[ix] * rho * Cp / dt + H
+	M[:, :] = 0 # set all values to zero
+	for ix in range(0, nx):
+		if ix == 0:
+			# This is the node at surface, use T_surf
+			M[ix, ix] = ... # EDITME
+			rhs[ix] = ... # EDITME
+		elif ix == nx-1:
+			# This is the node at surface, use T_bott
+			M[ix, ix] = ... # EDITME
+			rhs[ix] = ... # EDITME
+		else:
+			# Set the matrix coefficients for the inner nodes,
+			# the ones not at the boundary
 
-	# ... and then for boundaries:
-	# (Dividing by dx**2 here is done to make the matrix coefficients
-	# to be in the same order of magnitude with those of inner nodes,
-	# which makes printing prettier...)
-	ix = 0
-	M[ix, ix] = 1 / dx**2
-	rhs[ix] = T_surf / dx**2
+			# First calculate the coefficients:
+			A = ... # EDITME
+			B = ... # EDITME
 
-	ix = nx-1 
-	M[ix, ix] = 1 / dx**2
-	rhs[ix] = T_bott / dx**2
+			# We are calculating a value for node ix, so the 
+			# first index (the row of the matrix) is ix.
+			# The second index (the column of the matrix)
+			# is the index of the T to which the coefficient 
+			# belongs to
 
-	# Uncomment to print the final matrix:
-	printarr(M)
+			M[ix, ix-1] = ... # EDITME
+			M[ix, ix  ] = ... # EDITME    
+			M[ix, ix+1] = ... # EDITME     
+
+			# The right-hand side vector needs to be updated
+			# every time step since it contains values
+			# that change from time step to time step (T[ix, it-1]).
+			
+			# Calculate the value of the right-hand side vector:
+			rhs[ix] = ... # EDITME
 
 	# Solve the system of equations
-	res = np.linalg.solve(M, rhs)
+	Tnew = np.linalg.solve(M, rhs)
 
 	# Copy the solution to the temperature array
-	T[:] = res[:]
+	T[:, it] = Tnew[:]
 	
-# Plot the last and second to last time steps
-plt.plot(T, -x, '.--')
-plt.plot(T, -x, '.-')
+# Plot the last time step
+plt.plot(T[:, nt-1], -x, '.--')
 plt.show()
+
+# Plot all time steps
+plt.imshow(T, extent=(x.min()/1e3, x.max()/1e3, t.max()/SECINMYR, t.min()/SECINMYR), interpolation='nearest', cmap=cm.viridis, aspect='auto')
+plt.colorbar()
+plt.show()
+

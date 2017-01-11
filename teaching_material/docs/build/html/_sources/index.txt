@@ -20,6 +20,7 @@ Introduction to lithospheric geodynamic modelling
    advection
    full_heat
    fd_part2
+   heat_implicit_2d
 
 
 Resources

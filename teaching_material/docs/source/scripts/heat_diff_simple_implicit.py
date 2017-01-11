@@ -3,7 +3,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from printarr import printarr
-
 np.set_printoptions(precision=9, suppress=True, linewidth=120)
 
 ### heat_diff_simple_implicit.py

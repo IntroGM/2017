@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Heat conduction in 2D &mdash; IntroGM 17.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '17.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
+    <link rel="prev" title="Finite difference method, part II" href="fd_part2.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="heat-conduction-in-2d">
+<h1>Heat conduction in 2D<a class="headerlink" href="#heat-conduction-in-2d" title="Permalink to this headline">¶</a></h1>
+<div class="math" id="equation-heat-diff2d">
+<span class="eqno">(1)</span>\[\rho C_p \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} \right) + H\]</div>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<p>Discretize equation <a href="#equation-heat-diff2d">(1)</a>. Use the implicit
+discretization, i.e. calculate temperature for time step <span class="math">\(i\)</span> using
+temperature values from time step <span class="math">\(i\)</span> on the right hand
+side.</p>
+<ul class="simple">
+<li>How many indices do you need?</li>
+<li>How many boundary conditions do you need?</li>
+<li>Draw a stencil to illustrate the spatial grid</li>
+</ul>
+</div>
+<div class="math">
+\[\rho Cp \frac{T_{n,k}^i - T_{n,k}^{i-1}}{\Delta t} =
+\alpha \left(
+   \frac{T_{n+1,k}^i - 2T_{n,k}^i + T_{n-1,k}^i}{\Delta x^2} +
+   \frac{T_{n,k+1}^i - 2T_{n,k}^i + T_{n,k-1}^i}{\Delta y^2}
+\right) + H\]</div>
+<p>which can be reorganized to find the coefficients of the unknown
+temperature values:</p>
+<div class="math">
+\[T_{n-1,k}^i  \left( \frac{-\alpha}{\Delta x^2} \right) +
+T_{n+1,k}^i  \left( \frac{-\alpha}{\Delta x^2} \right) +
+T_{n,k}^i    \left( \frac{2\alpha}{\Delta x^2} + \frac{2\alpha}{\Delta y^2} + \frac{\rho C_p}{\Delta t} \right) +
+T_{n,k+1}^i  \left( \frac{-\alpha}{\Delta y^2} \right) +
+T_{n,k-1}^i  \left( \frac{-\alpha}{\Delta y^2} \right)
+=  H + T_{n,k}^{i-1} \rho C_p / \Delta t\]</div>
+<p>This can again be shortened by assigning <span class="math">\(A = \frac{-\alpha}{\Delta x^2}\)</span>,
+<span class="math">\(C = \frac{-\alpha}{\Delta y^2}\)</span>
+and <span class="math">\(B = \frac{2\alpha}{\Delta x^2} + \frac{2\alpha}{\Delta y^2} + \frac{\rho C_p}{\Delta t}\)</span>,
+leading to</p>
+<div class="math">
+\[A T_{n-1,k}^i   +
+A T_{n+1,k}^i   +
+B T_{n,k}^i     +
+C T_{n,k+1}^i   +
+C T_{n,k-1}^i
+=  H + T_{n,k}^{i-1} \rho C_p / \Delta t\]</div>
+<p>We have one of such equation for each spatial grid point (i.e.
+if there are <span class="math">\(N=3\)</span> grid points in <span class="math">\(x\)</span> direction and
+<span class="math">\(K=4\)</span> grid points in <span class="math">\(y\)</span> direction, there are total of twenty
+of these equation). Some of the equation have to
+be replaced by boundary conditions.</p>
+<p>We can use the method shown in &#8220;Finite difference method, part II&#8221; to
+solve these equations. However, this time the indexing of the coefficient
+array <span class="math">\(\mathbf{M}\)</span> is a bit more complicated.</p>
+<p>Since we have <span class="math">\(N \times K\)</span> unknowns, and equally
+many equations, <span class="math">\(\mathbf{M}\)</span> has <span class="math">\(N \times K\)</span> rows and
+<span class="math">\(N \times K\)</span> columns. With 3 grid points in <span class="math">\(x\)</span>
+direction and 4 grid points in <span class="math">\(y\)</span> direction, this means
+that the size of <span class="math">\(\mathbf{M}\)</span> is <span class="math">\(12 \times 12\)</span>.
+For each unique pair of <span class="math">\(n\)</span> and <span class="math">\(k\)</span>, i.e.
+for each spatial grid point, there is
+one row in the coefficient matrix.</p>
+<p>When calculating the value of <span class="math">\(T_{n,k}^i\)</span>, one
+fills the coefficients of the <span class="math">\(T\)</span> s (as separated
+above) at row <span class="math">\(n \times K + k\)</span> (assuming we start
+counting from zero!). This number is called the
+<em>global index</em> of the grid point and is a unique
+number for each grid point in both (all) directions.</p>
+<p>For example, when filling in coefficients of the equation
+that calculate <span class="math">\(T\)</span> at <span class="math">\(n = 1\)</span> and <span class="math">\(k = 2\)</span>
+the row in <span class="math">\(\mathbf{M}\)</span> we are looking at
+row <span class="math">\(1 \times 4 + 2\)</span>. <em>On this row</em>, the coefficients
+of the uknown temperatures will go to columns determined
+with the same rule: The coefficient for <span class="math">\(T_{n-1,k}^i\)</span>
+(which is <span class="math">\(A\)</span>) will go to column <span class="math">\((n-1)\times 4 + k\)</span>,
+i.e. <span class="math">\((1-1)\times 4 + 2\)</span>.</p>
+<p>The whole right hand side of the discretized expression
+(that has only temperature values from the previous time steps)
+will go to the right hand side vector, row <span class="math">\(n \times K + k\)</span>.</p>
+<p>If one wants to fill in a boundary condition <span class="math">\(T_{1,0}^i\)</span>
+(i.e. the location <span class="math">\(y=0\)</span>) the coefficient matrix will
+have a value of one at row <span class="math">\(1\times 4 + 0 = 4\)</span>, columnt
+<span class="math">\(1\times 4 + 0 = 4\)</span>.</p>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<p>Script <a href="#id2"><span class="problematic" id="id3">heat_diff2d_simple_implicit.py_</span></a> is an example of how to
+calculate <em>one</em> time step using the implicit finite difference
+method, in two spatial dimensions.</p>
+<ul>
+<li><p class="first">Read through the script and make sure you understand it.</p>
+</li>
+<li><p class="first">Run the script in IPython (<code class="code docutils literal"><span class="pre">%run</span> <span class="pre">scriptname.py</span></code>) and
+then print arrays like <code class="code docutils literal"><span class="pre">M</span></code> or <code class="code docutils literal"><span class="pre">Tnew</span></code> at your IPython
+prompt. How do they look like?</p>
+</li>
+<li><p class="first">Make the script calculate multiple time steps instead
+of only one:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Modify the script so that you add an <code class="code docutils literal"><span class="pre">for</span></code> loop
+around the two existing loops (for this, you need to
+define <code class="code docutils literal"><span class="pre">nt</span></code> in your code)</li>
+<li>Note that the temperature array only records the
+current known temperature field: it does not store
+the previous time steps within it like in the
+previous, 1D cases.</li>
+<li>At the end of the time loop, you need to copy (<code class="code docutils literal"><span class="pre">np.copy()</span></code>)
+the new temperature array <code class="code docutils literal"><span class="pre">Tnew</span></code> to be the known,
+&#8220;old&#8221; temperature array <code class="code docutils literal"><span class="pre">T</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>&#8211;<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Heat conduction in 2D</a><ul>
+<li><a class="reference internal" href="#id1">&#8211;</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="fd_part2.html" title="previous chapter">Finite difference method, part II</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/heat_implicit_2d.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Lars Kaislaniemi and David Whipp.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/heat_implicit_2d.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

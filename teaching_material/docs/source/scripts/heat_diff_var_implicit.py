@@ -2,6 +2,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 np.set_printoptions(precision=9, suppress=True, linewidth=120)
 
 
@@ -129,7 +130,12 @@ for it in range(1,nt):
 	# Copy the solution to the temperature array
 	T[:, it] = Tnew[:]
 	
-# Plot the last time steps
+# Plot the last time step
 plt.plot(T[:, nt-1], -x, '.--')
+plt.show()
+
+# Plot all time steps
+plt.imshow(T, extent=(x.min()/1e3, x.max()/1e3, t.max()/SECINMYR, t.min()/SECINMYR), interpolation='nearest', cmap=cm.viridis, aspect='auto')
+plt.colorbar()
 plt.show()
 

@@ -142,8 +142,18 @@ a function called :code:`np.linalg.solve()`.
 See script heat_diff_simple_implicit.py_ for an example how to use
 it.
 
+.. topic:: Exercise
+   
+   Take the script template heat_diff_const_implicit.py_ and fill in the missing
+   lines. Use heat_diff_simple_implicit.py_ as an example, if needed.
+   This code will then calculate the cooling lithosphere problem
+   using an implicit finite difference method.
 
+   Experiment with the size of time step (or, number of time steps taken):
+   Can you make it "explode" like with the heat diffusion code with
+   explicit formulation used previously?
 
 .. _heat_diff_simple_implicit.py: _static/heat_diff_simple_implicit.py
+.. _heat_diff_const_implicit.py: _static/heat_diff_const_implicit.py
 
 

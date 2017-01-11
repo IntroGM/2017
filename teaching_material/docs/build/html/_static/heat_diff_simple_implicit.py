@@ -3,10 +3,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from printarr import printarr
-
 np.set_printoptions(precision=9, suppress=True, linewidth=120)
 
 ### heat_diff_simple_implicit.py
+# 
+# Calculate ONE time step with the implicit finite differences method
+# for the heat equation
 
 # Physical parameters
 alpha = 4.0
@@ -59,3 +61,4 @@ for ix in range(nx):
 
 # Solve the system of equations
 Tnew = np.linalg.solve(M, rhs)
+
