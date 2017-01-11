@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Advection &#8212; IntroGM 17.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '17.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
+    <link rel="next" title="Heat conduction with advection" href="full_heat.html" />
+    <link rel="prev" title="Testing your code and benchmarking" href="testing-your-code.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="advection">
+<h1>Advection<a class="headerlink" href="#advection" title="Permalink to this headline">¶</a></h1>
+<p>The one-dimensional equation describing the advection of field <span class="math">\(f\)</span> is</p>
+<div class="math" id="equation-adv-1d">
+<span class="eqno">(1)</span>\[\frac{\partial f}{\partial t} = -v_x \frac{\partial f}{\partial x}\]</div>
+<p>where <span class="math">\(v_x\)</span> is the velocity. The field <span class="math">\(f\)</span> can be many
+different things, for example: topography, chemical concentration,
+temperature, etc. Despite its very simple appearance,
+its numerical solutions often cause some (or a lot of) trouble.</p>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<p>Discretize equation <a href="#equation-adv-1d">(1)</a> with forward difference
+in time, and</p>
+<ul class="simple">
+<li>forward,</li>
+<li>central,</li>
+<li>backward difference in space.</li>
+</ul>
+</div>
+<div class="figure" id="id2">
+<img alt="_images/advection.svg" src="_images/advection.svg" /><p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Illustration of the advection differential equation. The gradient
+of the function determines whether the function value
+will increase or decrease due to the advection.</span></p>
+</div>
+<div class="figure" id="id3">
+<img alt="_images/advection_fd_upwind.svg" src="_images/advection_fd_upwind.svg" /><p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Illustration of the <em>upwind</em> FD advection solution
+with exact results caused by the right combination
+of time step, grid size and velocity. The value
+of the field at grid point <span class="math">\(n\)</span> is copied
+from the grid point <span class="math">\(n-1\)</span>. The function will retain
+its original form (limited only by the grid resolution)
+no matter how many times it is advected.</span></p>
+</div>
+<div class="topic">
+<p class="topic-title first">Terminology</p>
+<ul class="simple">
+<li><em>Upwind</em> advection scheme approximates the change in the function
+value by using the function gradient windward, on the side of the
+&#8220;incoming&#8221; flux.</li>
+<li><em>Downwind</em> advection scheme does the exact opposite and
+uses the gradient leeward, on the opposite side from
+the incoming flux.</li>
+</ul>
+</div>
+<div class="figure" id="id4">
+<span id="fig-adv-fd-upw-half"></span><img alt="_images/advection_fd_upwind_halfstep.svg" src="_images/advection_fd_upwind_halfstep.svg" /><p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Illustration of the upwind FD advection solution
+in a typical case where <span class="math">\(\frac{v_x\Delta t}{\Delta x} \ne 1\)</span>.
+Effectively, a linear interpolation between grid points
+is taking place, causing numerical diffusion in the solution.</span></p>
+<div class="legend">
+<p>The amount of diffusion is proportional to the
+amount of time steps taken.</p>
+<p>Black line: Original field; dashed black line: advected field
+at next time step (exact solution); dashed red line: advected
+field at next time step (numerical solution).</p>
+</div>
+</div>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<ul class="simple">
+<li>What will happen if <span class="math">\(\frac{v_x\Delta t}{\Delta x} &gt; 1\)</span>?</li>
+<li>Replace the upwind approximation used in Fig <a class="reference internal" href="#fig-adv-fd-upw-half"><span class="std std-numref">Fig. 10</span></a>
+with downwind approximation. How does the simplified expression
+for <span class="math">\(f_n^{i+1}\)</span> change? How would this change the final advected field?</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">Exercise</p>
+<p>Let&#8217;s solve the 1D advection equation with finite differences. For testing
+purposes we will advect a simple step function <span class="math">\(f\)</span>:</p>
+<div class="math">
+\[\begin{split}f = 0 \quad \mathrm{if}~x &lt; 1 \\
+f = 1 \quad \mathrm{if}~x \ge 1\end{split}\]</div>
+<p>The advection velocity <span class="math">\(v_x=1\)</span> will be positive, i.e. in direction
+of the <span class="math">\(x\)</span> axis. We will run the model for 8 (seconds, in model time).</p>
+<p>Use the following upwind discretization of the advection equation:</p>
+<div class="math">
+\[\frac{f_n^{i+1}-f_n^i}{\Delta t} = -v_x\frac{f_n^i - f_{n-1}^i}{\Delta x}\]</div>
+<ol class="arabic simple">
+<li>Rearrange the discretized equation so that you get an expression
+for the function value of the next time step</li>
+<li>How many boundary conditions do you need? What are those?</li>
+<li>Create your python script: Either start one from scratch using a
+provided template (<a class="reference external" href="_static/advection_upwind_template.py">advection_upwind_template.py</a>) or use
+<a class="reference external" href="_static/advection_upwind.py">advection_upwind.py</a> where you need to write the missing line
+within the for loops.</li>
+<li>Once your code is working, experiment with different combinations
+of <span class="math">\(\Delta x\)</span>, <span class="math">\(\Delta t\)</span> and <span class="math">\(v_x\)</span> to see
+how they affect the solution.</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h2>&#8212;<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Advection</a><ul>
+<li><a class="reference internal" href="#id1">&#8212;</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="testing-your-code.html" title="previous chapter">Testing your code and benchmarking</a></li>
+      <li>Next: <a href="full_heat.html" title="next chapter">Heat conduction with advection</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/advection.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Lars Kaislaniemi and David Whipp.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/advection.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
