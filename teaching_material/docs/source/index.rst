@@ -16,6 +16,7 @@ Introduction to lithospheric geodynamic modelling
    python_essentials
    finite_differences_1
    fd_heat_conduction
+   testing-your-code
    advection
    full_heat
 
@@ -34,4 +35,3 @@ Resources
 .. _`Short NumPy tutorial`: https://engineering.ucsb.edu/~shell/che210d/numpy.pdf
 .. _`Wolfram Alpha`: https://www.wolframalpha.com/examples/Math.html
 .. _`Random notes and snippets`: https://hackmd.io/JwZgrAZgphCMUFpgAYBsAjBAWWYsPXQwRGAGMssoyBDAdjoCZGg=#
-
