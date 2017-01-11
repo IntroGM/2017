@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Finite differences formulation of the heat conduction problem &#8212; IntroGM 17.1 documentation</title>
+    <title>Finite differences formulation of the heat conduction problem &mdash; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,20 +24,15 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
     <link rel="next" title="Testing your code and benchmarking" href="testing-your-code.html" />
     <link rel="prev" title="Finite differences method introduction" href="finite_differences_1.html" />
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
-  
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
@@ -75,7 +70,7 @@ for the temperature during next time step, i.e.</p>
 <p>Like in the sphere-in-a-fluid example, we can draw a finite difference
 stencil of the problem.</p>
 <div class="figure align-center" id="id1">
-<span id="fig-stencil-heatdiff-simple"></span><img alt="_images/stencil_heatdiff_simple.svg" src="_images/stencil_heatdiff_simple.svg" /><p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The temperature <span class="math">\(T_k^{i+1}\)</span> of the next time step
+<span id="fig-stencil-heatdiff-simple"></span><img src="_images/stencil_heatdiff_simple.svg" /><p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The temperature <span class="math">\(T_k^{i+1}\)</span> of the next time step
 will be calculated based on the three temperature values from the
 previous time step.</span></p>
 </div>
@@ -215,7 +210,7 @@ Heat conductivity and heat flow are not known (and need not to be known) at the 
 points, and, on the other hand, the other variables are <em>only</em> known
 at the main grid points.</p>
 <div class="figure" id="id2">
-<img alt="_images/stencil_heatdiff_staggered.svg" src="_images/stencil_heatdiff_staggered.svg" /><p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">A <em>staggered grid</em> for the solution of the heat diffusion problem,
+<img src="_images/stencil_heatdiff_staggered.svg" /><p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">A <em>staggered grid</em> for the solution of the heat diffusion problem,
 with four time steps and four spatial grid points.</span></p>
 <div class="legend">
 <p>Circles mark the grid points that are used to define temperature,
@@ -352,11 +347,14 @@ down the whole sill? How many time steps do you need?</li>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -367,8 +365,8 @@ down the whole sill? How many time steps do you need?</li>
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
       <a href="_sources/fd_heat_conduction.txt"

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Finite difference method, part II &#8212; IntroGM 17.1 documentation</title>
+    <title>Finite difference method, part II &mdash; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,19 +24,14 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
     <link rel="prev" title="Heat conduction with advection" href="full_heat.html" />
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
-  
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
@@ -56,13 +51,13 @@ equation with forward difference in time. For example
 with the simple heat diffusion equation (no advection):</p>
 <div class="math">
 \[\rho C_p \frac{T_n^{i} - T_n^{i-1}}{\Delta t} =
-\frac{T_{n+1}^{i-1} - 2T_n^{i-1} + T_{n-1}^{i-1}}{\Delta x^2} + H\]</div>
+\alpha \frac{T_{n+1}^{i-1} - 2T_n^{i-1} + T_{n-1}^{i-1}}{\Delta x^2} + H\]</div>
 <p>We can, however, formulate the same heat equation with
 a backward difference in time (which is often beneficial
 for the <em>stability</em> of the solution):</p>
 <div class="math" id="equation-heat_diff_backward">
 <span class="eqno">(1)</span>\[\rho C_p \frac{T_n^{i} - T_n^{i-1}}{\Delta t} =
-\frac{T_{n+1}^i - 2T_n^i + T_{n-1}^i}{\Delta x^2} + H\]</div>
+\alpha \frac{T_{n+1}^i - 2T_n^i + T_{n-1}^i}{\Delta x^2} + H\]</div>
 <p>Now, in order to calculate the new value <span class="math">\(T_n^i\)</span>
 we need to know the new values next to it, <span class="math">\(T_{n\pm 1}^i\)</span>.
 Clearly, this we are not able to use the new values to
@@ -79,14 +74,14 @@ we can solve all the values of <span class="math">\(T\)</span> on one go.</p>
 the equation to find all the coefficients for each <span class="math">\(T\)</span>,
 we get</p>
 <div class="math">
-\[T_{n-1}^i \left(\frac{-k}{\Delta x^2}\right) +
-T_n^i \left(\frac{\rho C_p}{\Delta t} + \frac{2k}{\Delta x^2}\right) +
-T_{n+1}^i \left(\frac{-k}{\Delta x^2}\right)
+\[T_{n-1}^i \left(\frac{-\alpha}{\Delta x^2}\right) +
+T_n^i \left(\frac{\rho C_p}{\Delta t} + \frac{2\alpha}{\Delta x^2}\right) +
+T_{n+1}^i \left(\frac{-\alpha}{\Delta x^2}\right)
 = T_n^{i-1} \rho C_p / \Delta t + H\]</div>
 <p>Here, the coefficients for all the <span class="math">\(T\)</span> s on the
 left hand side are known, and so is the whole
 right hand side, too. If we mark, for convenience,
-<span class="math">\(A=-k/\Delta x^2\)</span> and <span class="math">\(B=\frac{\rho C_p}{\Delta t} + \frac{2k}{\Delta x^2}\)</span>,
+<span class="math">\(A=-\alpha/\Delta x^2\)</span> and <span class="math">\(B=\frac{\rho C_p}{\Delta t} + \frac{2\alpha}{\Delta x^2}\)</span>,
 we can write</p>
 <div class="math">
 \[T_{n-1}^i A +
@@ -136,6 +131,27 @@ we get following system:</p>
   T_2^{i-1} \rho C_p / \Delta t + H \\
   T_{\mathrm{bott}}
 \end{bmatrix}\end{split}\]</div>
+<p>or, in shorter notation</p>
+<div class="math">
+\[\mathbf{M}\mathbf{T}^i = \mathbf{b}\]</div>
+<p>where <span class="math">\(\mathbf{M}\)</span> is the coefficient matrix
+(values of which are known),
+<span class="math">\(\mathbf{T}^i\)</span> is the temperature vector of
+unknown values (i.e. those we want to solve), and
+<span class="math">\(\mathbf{b}\)</span> is the right hand side with
+known values.</p>
+<p>In order to solve the unknown <span class="math">\(\mathbf{T}^i\)</span>
+we can multiply the equation by the inverse of
+the matrix <span class="math">\(\mathbf{M}\)</span>.</p>
+<div class="math">
+\[\begin{split}\begin{eqnarray}
+\mathbf{M}^{-1} \mathbf{M} \mathbf{T}^i &amp; = &amp; \mathbf{M}^{-1} \mathbf{b} \\
+\mathbf{T}^i &amp; = &amp; \mathbf{M}^{-1} \mathbf{b}
+\end{eqnarray}\end{split}\]</div>
+<p>In Python (NumPy), there is a more direct way to achieve this,
+a function called <code class="code docutils literal"><span class="pre">np.linalg.solve()</span></code>.</p>
+<p>See script <a class="reference external" href="_static/heat_diff_simple_implicit.py">heat_diff_simple_implicit.py</a> for an example how to use
+it.</p>
 </div>
 
 
@@ -161,11 +177,14 @@ we get following system:</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -176,8 +195,8 @@ we get following system:</p>
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
       <a href="_sources/fd_part2.txt"

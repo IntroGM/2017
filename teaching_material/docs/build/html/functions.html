@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Functions &#8212; IntroGM 17.1 documentation</title>
+    <title>Functions &mdash; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,21 +24,16 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
     <link rel="up" title="Python essentials" href="python_essentials.html" />
     <link rel="next" title="Introduction to NumPy" href="intro-to-numpy.html" />
     <link rel="prev" title="Basic elements of Python" href="python-basic-elements.html" />
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
-  
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
@@ -63,7 +58,7 @@ Functions are a way to avoid such situations and they can save you a lot of time
 <p>Let&#8217;s consider again the task of converting temperatures from Fahrenheit to Celsius.
 Such an operation is a fairly common task when dealing with temperature data.</p>
 <p>Let&#8217;s define our first function called <code class="docutils literal"><span class="pre">celsius_to_fahr</span></code>:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">celsius_to_fahr</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">celsius_to_fahr</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
 <span class="gp">... </span>   <span class="k">return</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span> <span class="o">*</span> <span class="n">temp</span> <span class="o">+</span> <span class="mi">32</span>
 </pre></div>
 </div>
@@ -78,24 +73,24 @@ Inside the function, we use a return statement to define the value that should b
 <li><p class="first">Let’s try running our function.
 Calling our self-defined function is no different from calling any other function such as <code class="docutils literal"><span class="pre">print()</span></code>.
 You need to call it with its name and send your value to the required parameter(s) inside the parentheses:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">freezing_point</span> <span class="o">=</span>  <span class="n">celsius_to_fahr</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Freezing point of water in Fahrenheit:&#39;</span><span class="p">,</span> <span class="n">freezing_point</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">freezing_point</span> <span class="o">=</span>  <span class="n">celsius_to_fahr</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Freezing point of water in Fahrenheit:&#39;</span><span class="p">,</span> <span class="n">freezing_point</span><span class="p">)</span>
 <span class="go">Freezing point of water in Fahrenheit: 32.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Boiling point of water in Fahrenheit:&#39;</span><span class="p">,</span> <span class="n">celsius_to_fahr</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Boiling point of water in Fahrenheit:&#39;</span><span class="p">,</span> <span class="n">celsius_to_fahr</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
 <span class="go">Boiling point of water in Fahrenheit: 212.0</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Now that we know how to create a function to convert Celsius to Fahrenheit, let&#8217;s create another function called
 <code class="docutils literal"><span class="pre">kelvin_to_celsius</span></code>:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">kelvin_to_celsius</span><span class="p">(</span><span class="n">temp_k</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">kelvin_to_celsius</span><span class="p">(</span><span class="n">temp_k</span><span class="p">):</span>
 <span class="gp">... </span>   <span class="k">return</span> <span class="n">temp_k</span> <span class="o">-</span> <span class="mf">273.15</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">And let&#8217;s use it in a similar way as the earlier one:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">absolute_zero</span> <span class="o">=</span> <span class="n">kelvin_to_celsius</span><span class="p">(</span><span class="n">temp_k</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Absolute zero in Celsius:&#39;</span><span class="p">,</span> <span class="n">absolute_zero</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">absolute_zero</span> <span class="o">=</span> <span class="n">kelvin_to_celsius</span><span class="p">(</span><span class="n">temp_k</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Absolute zero in Celsius:&#39;</span><span class="p">,</span> <span class="n">absolute_zero</span><span class="p">)</span>
 <span class="go">Absolute zero in Celsius: -273.15</span>
 </pre></div>
 </div>
@@ -103,7 +98,7 @@ You need to call it with its name and send your value to the required parameter(
 <li><p class="first">What about converting Kelvins to Fahrenheit?
 We could write out an own formula for it, but we don’t need to.
 Instead, we can compose it by using the two functions we have already created and calling those from the function we are now creating:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">kelvin_to_fahr</span><span class="p">(</span><span class="n">temp_k</span><span class="p">):</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">kelvin_to_fahr</span><span class="p">(</span><span class="n">temp_k</span><span class="p">):</span>
 <span class="gp">... </span>   <span class="c1"># Kelvin in celsius</span>
 <span class="gp">... </span>   <span class="n">temp_c</span> <span class="o">=</span> <span class="n">kelvin_to_celsius</span><span class="p">(</span><span class="n">temp_k</span><span class="p">)</span>
 <span class="gp">... </span>   <span class="c1"># Celsius in Fahrenheit</span>
@@ -114,8 +109,8 @@ Instead, we can compose it by using the two functions we have already created an
 </div>
 </li>
 <li><p class="first">Let&#8217;s use the function:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">absolute_zero_f</span> <span class="o">=</span> <span class="n">kelvin_to_fahr</span><span class="p">(</span><span class="n">temp_k</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Absolute zero in Fahrenheit:&#39;</span><span class="p">,</span> <span class="n">absolute_zero_f</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">absolute_zero_f</span> <span class="o">=</span> <span class="n">kelvin_to_fahr</span><span class="p">(</span><span class="n">temp_k</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Absolute zero in Fahrenheit:&#39;</span><span class="p">,</span> <span class="n">absolute_zero_f</span><span class="p">)</span>
 <span class="go">Absolute zero in Fahrenheit: -459.66999999999996</span>
 </pre></div>
 </div>
@@ -161,11 +156,14 @@ Instead, we can compose it by using the two functions we have already created an
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -176,8 +174,8 @@ Instead, we can compose it by using the two functions we have already created an
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
       <a href="_sources/functions.txt"

@@ -69,18 +69,18 @@ for it in range(1,nt):
 		# first index (the row of the matrix) is ix.
 		# The second index (the column of the matrix)
 		# is the index of the T to which the coefficient 
-		# belongs to.
+		# belongs to
 
-		M[ix, ix-1] = ... # EDITME  
-		M[ix, ix  ] = ... # EDITME  
-		M[ix, ix+1] = ... # EDITME  
+		M[ix, ix-1] =                 -alpha/dx**2
+		M[ix, ix  ] =                 rho*Cp/dt + 2*alpha/dx**2
+		M[ix, ix+1] =                 -alpha/dx**2
 
 		# The right-hand side vector needs to be updated
 		# every time step since it contains values
 		# that change from time step to time step (T[ix, it-1]).
 		
 		# Calculate the value of the right-hand side vector:
-		rhs[ix] = ... # EDITME
+		rhs[ix] =                     T[ix, it-1] * rho * Cp / dt + H
 
 	# Set the matrix coefficients for the the boundaries:
 	ix = 0

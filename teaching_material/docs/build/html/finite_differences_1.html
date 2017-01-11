@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Finite differences method introduction &#8212; IntroGM 17.1 documentation</title>
+    <title>Finite differences method introduction &mdash; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,20 +24,15 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
     <link rel="next" title="Finite differences formulation of the heat conduction problem" href="fd_heat_conduction.html" />
     <link rel="prev" title="Conditional statements" href="conditional-statements.html" />
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
-  
+  <body role="document">  
 
     <div class="document">
       <div class="documentwrapper">
@@ -81,7 +76,7 @@ approaches the exact gradient of the function <span class="math">\(f_0\)</span> 
 <div class="topic">
 <p class="topic-title first">Exercise</p>
 <p>Sketch a visualization of backward and central differences like the forward
-differences is visualized in Fig <a class="reference internal" href="#fig-fd-sketches-1"><span class="std std-numref">Fig. 1</span></a>.</p>
+differences is visualized in Fig <a class="reference internal" href="#fig-fd-sketches-1"><span>Fig. 1</span></a>.</p>
 </div>
 <p>Equation <a href="#equation-fd_deriv_approx_cnt">(3)</a> can be generalized as</p>
 <div class="math" id="equation-fd_deriv_approx_cnt_gen">
@@ -272,7 +267,7 @@ solution?</p>
 the ball&#8217;s elevation like we just did. You can adjust the starting elevation,
 the initial velocity, the number of steps to calculate and the total time
 to calculate.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="mf">1.8</span>     <span class="c1"># Starting elevation</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">z</span> <span class="o">=</span> <span class="mf">1.8</span>     <span class="c1"># Starting elevation</span>
 <span class="n">Vz</span> <span class="o">=</span> <span class="mi">15</span>     <span class="c1"># Initial vertical velocity</span>
 <span class="n">nt</span> <span class="o">=</span> <span class="mi">6</span>      <span class="c1"># In how many steps we do the calculation</span>
 <span class="n">tottime</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># Total time (s) to calculate</span>
@@ -420,13 +415,13 @@ equation itself. The number of boundary/initial conditions needed depends
 on the order of the differential and on the dimensions of the problem.
 Here we needed two (second order in one dimension, time).</p>
 <div class="figure" id="id7">
-<img alt="_images/stencil_stokesball.svg" src="_images/stencil_stokesball.svg" /><p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text"><em>Stencil</em> of the finite differences approximation for the problem
+<img src="_images/stencil_stokesball.svg" /><p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text"><em>Stencil</em> of the finite differences approximation for the problem
 of a ball falling within a fluid. In order to calculate <span class="math">\(z\)</span>
 at <span class="math">\(i+1\)</span> we need to know <span class="math">\(z\)</span> at <span class="math">\(i\)</span> and at
 <span class="math">\(i-1\)</span>.</span></p>
 </div>
 <div class="figure" id="id8">
-<img alt="_images/stencil_stokesball_boundary.svg" src="_images/stencil_stokesball_boundary.svg" /><p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Stencil of the finite differences approximation illustrating
+<img src="_images/stencil_stokesball_boundary.svg" /><p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Stencil of the finite differences approximation illustrating
 the boundary (initial) condition requirement; <span class="math">\(z\)</span> at
 <span class="math">\(i=1\)</span> cannot be calculated using the basic discretized
 version of the equation: one needs special <em>boundary condition</em>.</span></p>
@@ -562,11 +557,14 @@ once to get</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -577,8 +575,8 @@ once to get</p>
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
       
       |
       <a href="_sources/finite_differences_1.txt"
