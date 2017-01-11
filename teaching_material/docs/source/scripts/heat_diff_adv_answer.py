@@ -6,7 +6,7 @@ from scipy.special import erf
 ### heat_diff_2.py
 ###
 ### Script to calculate the finite differences
-### solution for the 1D heat diffusion & production
+### solution for the 1D heat diffusion-advection & production
 ### problem.
 ###
 ### Uses a staggered grid:
@@ -61,12 +61,13 @@ Cp[idx_mantle] = 1250
 H[idx_crust] = 2.5e-6
 H[idx_mantle] = 0.02e-6
 
-idx_crust = x_mp < 35e3
-idx_mantle = x_mp >= 35e3
-
+idx_crust = x_mp < 35e3   # NB! we use the mid-point grid
+idx_mantle = x_mp >= 35e3 # when handling head conductivity
+                          # here
 alpha[idx_crust] = 2.5
 alpha[idx_mantle] = 4.0
 #########################################
+
 
 # Calculate the spacing between time steps
 dt = totaltime / (nt-1)
@@ -81,19 +82,18 @@ time = np.zeros(nt)
 time[0] = 0
 
 # Loop over every time step, always calculating the new temperature 
-# at time step 'it', at every depth, based on the temperature
-# from the previous time step, 'it-1'
+# at each depth
+# The first (T[0,:]) and last (T[nx,:]) rows are skipped
+# since these values are known from the boundary condition.
+# The first columnt (T[:,0]) is also skipped since these 
+# values are known from the initial condition
 for it in range(1, nt):
 	# Set the boundary values
 	T[0, it] = T_surface
 	T[nx-1, it] = T_bottom
 
-	## Implement here the code where you loop over 
-	## each (spatial) grid point and calculate the 
-	## new temperature values at (it), based on the old 
-	## ones at (it-1).
 	for ix in range(1, nx-1):
-		T[it, ix] = ... # EDITME
+		T[ix, it] = (  (  alpha[ix] * (T[ix+1, it-1] - T[ix, it-1]) - alpha[ix-1] * (T[ix, it-1] - T[ix-1, it-1])) / dx**2 + H[ix] ) * dt / (rho[ix] * Cp[ix]) + T[ix, it-1]
 
 	# Calculate the time in seconds at this timestep
 	time[it] = time[it-1] + dt

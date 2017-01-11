@@ -2,6 +2,7 @@ Course materials
 ================
 
 Below are links to the sets of lecture slides and websites for the IntroGM course.
+If you prefer, you are welcome to use the [Table of Contents for the web lessons](https://introgm.github.io/lessons/#) rather than the direct link.
 
 |-----------+-------------------------------------+---------------+-----------|
 | Day 1     | Topic                               | Web materials | Documents |

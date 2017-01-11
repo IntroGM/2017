@@ -2,27 +2,31 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import erf
+import analytical_solutions
 
 ### heat_diff_template.py
 
 ### Assign values for physical parameters
 Cp = 1250
-rho = ...
-...
+rho = 3300
+alpha = 4.0
+H = 0.0
 
 ### Assign values for boundary and initial conditions
 T_ini = 1350
-T_surf = ...
-...
+T_surf = 0 
+T_bott = 1350
 
 ### Assign values needed to define the grid
 L = 100e3      # problem size in meters
-nx = ...       # number of grid points in space
-tottime = ...  # total simulation time, in seconds
+nx = 6         # number of grid points in space 
+nt = 100 
+tottime = 60*60*24*365.25*6e6  # total simulation time, in seconds
 
 ### Calculate other required parameters
-dt = ...       # calculate time step size based on nx and tottime
-dx = ...       # calculate grid spacing based on problem size and grid spacing
+dt = tottime / (nt - 1)  # calculate time step size based on nx and tottime
+dx = L / (nx - 1)        # calculate grid spacing based on problem size 
+                         # and grid spacing
 
 ### Create an 2-dimensional array to hold the calculated temperature 
 ### values. No editing needed here.
@@ -37,10 +41,10 @@ T = np.zeros((nx, nt))
 ### Initialize all the grid points of the first time step with the initial
 ### temperature value. No editing needed here.
 for ix in range(nx):
-	T[ix 0] = T_ini
+	T[ix, 0] = T_ini
 
 ### Generate an array that holds the time (in seconds) for
-### each time step. This is need for plotting purposes.
+### each time step. This is needed for plotting purposes.
 ###
 ### 'np.arange(a, b)' is a NumPy function that generates
 ### a 1D array with values from a to b, i.e.
@@ -54,8 +58,8 @@ for ix in range(nx):
 ### No editing needed here.
 time = np.arange(0, nt) * dt
 
-### Generate a similar array to hold the physical locations
-### of the grid points. No editing needed here.
+### Generate a similar array using similar expression
+### to hold the physical locations of the grid points. 
 x = np.arange(0, nx) * dx
 
 ### The main time stepping loop:
@@ -71,14 +75,14 @@ x = np.arange(0, nx) * dx
 ### the boundary condition.
 for it in range(1, nt):
 	# Set the temperature at the boundaries
-	T[it, 0] = ...
-	T[it, nx-1] = ...
+	T[0, it] = T_surf
+	T[nx-1, it] = T_bott
 
 	# Calculate the other grid points:
 	for ix in range(1, nx-1):
 		# Calculate the new temperature at time step 'it'
 		# based on the previous time step 'it-1':
-		T[it, ix] = ...
+		T[ix, it] = (alpha * (T[ix-1, it-1] - 2*T[ix, it-1] + T[ix+1, it-1]) / dx**2 + H) * dt / (rho * Cp) + T[ix, it-1]
 
 
 ### Calculate analytical solution for the problem given
@@ -90,13 +94,12 @@ do_analytical = True
 
 if do_analytical:
 	x_analytical = np.linspace(0, 100e3, 200)
-	kappa = 2.5 / (1250 * 3300)
-	T_analytical = 1350*erf(x_analytical / (2*np.sqrt(kappa*time[nt-1])))
+	T_analytical = analytical_solutions.oceanic_cooling(x_analytical, time[nt-1], alpha, rho, Cp, T_surf, T_bott)
 
 
 ### Create the plots for numerical and possible analytical solutions
 ### Here we plot the last time step calculated. No editing needed here.
-plt.plot(T[nt-1, :], -x/1e3, '.--')
+plt.plot(T[:, nt-1], -x/1e3, '.--')
 if do_analytical:
 	plt.plot(T_analytical, -x_analytical/1e3, '-')
 plt.xlabel("Temperature (C)")

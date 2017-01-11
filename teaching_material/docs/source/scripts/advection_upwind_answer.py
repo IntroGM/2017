@@ -42,7 +42,7 @@ f[0, :] = f_0
 # Start advection calculation
 for it in range(1, nt):
    for ix in range(1, nx):
-      f[ix, it] = .... # EDITME
+      f[ix, it] = -vx * dt * (f[ix, it-1] - f[ix-1, it-1]) / dx + f[ix, it-1]
 
    ## Instead of the "for ix" loop one can do that on one line:
    # f[it, 1:nx] = -vx * dt * (f[it-1, 1:nx] - f[it-1, 0:(nx-1)]) / dx + f[it-1, 1:nx]
