@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Heat conduction in 2D &mdash; IntroGM 17.1 documentation</title>
+    <title>Heat conduction in 2D &#8212; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,21 +17,26 @@
         VERSION:     '17.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Finite difference method, part II" href="fd_part2.html" />
    
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -40,11 +45,16 @@
             
   <div class="section" id="heat-conduction-in-2d">
 <h1>Heat conduction in 2D<a class="headerlink" href="#heat-conduction-in-2d" title="Permalink to this headline">¶</a></h1>
+<p>The heat equation in two dimensions (without advection) can be
+stated as</p>
 <div class="math" id="equation-heat-diff2d">
-<span class="eqno">(1)</span>\[\rho C_p \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} \right) + H\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-heat-diff2d" title="Permalink to this equation">¶</a></span>\[\rho C_p \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} \right) + H\]</div>
+<p>The only addition compared to the one-dimensional case is the second order
+derivative with respect to <span class="math">\(y\)</span> on the right hand side of the
+equation.</p>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Discretize equation <a href="#equation-heat-diff2d">(1)</a>. Use the implicit
+<p>Discretize equation <a class="reference internal" href="#equation-heat-diff2d">(1)</a>. Use the implicit
 discretization, i.e. calculate temperature for time step <span class="math">\(i\)</span> using
 temperature values from time step <span class="math">\(i\)</span> on the right hand
 side.</p>
@@ -119,7 +129,7 @@ have a value of one at row <span class="math">\(1\times 4 + 0 = 4\)</span>, colu
 <span class="math">\(1\times 4 + 0 = 4\)</span>.</p>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Script <a href="#id2"><span class="problematic" id="id3">heat_diff2d_simple_implicit.py_</span></a> is an example of how to
+<p>Script <a class="reference external" href="_static/heat_diff2d_simple_implicit.py">heat_diff2d_simple_implicit.py</a> is an example of how to
 calculate <em>one</em> time step using the implicit finite difference
 method, in two spatial dimensions.</p>
 <ul>
@@ -177,21 +187,18 @@ the new temperature array <code class="code docutils literal"><span class="pre">
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/heat_implicit_2d.txt"
+      <li><a href="_sources/heat_implicit_2d.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -202,11 +209,11 @@ the new temperature array <code class="code docutils literal"><span class="pre">
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/heat_implicit_2d.txt"
+      <a href="_sources/heat_implicit_2d.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

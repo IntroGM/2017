@@ -133,3 +133,6 @@ have a value of one at row :math:`1\times 4 + 0 = 4`, columnt
 
 --
 ^^
+
+.. _heat_diff2d_simple_implicit.py: _static/heat_diff2d_simple_implicit.py
+
