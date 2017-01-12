@@ -18,8 +18,8 @@ Introduction to lithospheric geodynamic modelling
    fd_heat_conduction
    testing-your-code
    advection
-   full_heat
    fd_part2
+   full_heat
    heat_implicit_2d
 
 
