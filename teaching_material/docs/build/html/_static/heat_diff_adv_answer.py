@@ -29,8 +29,8 @@ T_bottom  = 1350   # boundary condition at the bottom
 
 L         = 100e3  # height of the rock column, meters
 nx        = 10     # number of grid points in space
-nt        = 10    # number of grid points in time
-totaltime = 60*60*24*365.25*10e6 # total time to calculate, in seconds
+nt        = 100    # number of grid points in time
+totaltime = 60*60*24*365.25*100e6 # total time to calculate, in seconds
 #########################################
 #### Arrays for physical parameters: ####
 #########################################
@@ -39,6 +39,7 @@ Cp = np.zeros(nx)    # heat capacity, J/kgK
 alpha = np.zeros(nx) # heat conductivity, W/mK
 H = np.zeros(nx)     # heat production rate, W/m3
 
+vx = 300 / (1e6*365.25*24*60*60)
 # Generate an array of depth values for the main grid
 x = np.linspace(0, L, nx)
 dx = L / (nx-1)
@@ -93,7 +94,7 @@ for it in range(1, nt):
 	T[nx-1, it] = T_bottom
 
 	for ix in range(1, nx-1):
-		T[ix, it] = (  (  alpha[ix] * (T[ix+1, it-1] - T[ix, it-1]) - alpha[ix-1] * (T[ix, it-1] - T[ix-1, it-1])) / dx**2 + H[ix] ) * dt / (rho[ix] * Cp[ix]) + T[ix, it-1]
+		T[ix, it] = (  (  alpha[ix] * (T[ix+1, it-1] - T[ix, it-1]) - alpha[ix-1] * (T[ix, it-1] - T[ix-1, it-1])) / dx**2 + H[ix] ) * dt / (rho[ix] * Cp[ix]) - vx * (T[ix, it-1] - T[ix-1, it-1]) * dt / dx + T[ix, it-1]
 
 	# Calculate the time in seconds at this timestep
 	time[it] = time[it-1] + dt
