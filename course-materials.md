@@ -25,7 +25,10 @@ If you prefer, you are welcome to use the [Table of Contents for the web lessons
 |-----------+-------------------------------------+---------------+-----------|
 | **Day 4** |                                     |               |           |
 |-----------|-------------------------------------|:-------------:|:---------:|
-|           |                                     |               |           |
+| 4.1       | 1D heat conduction,variable props   | [Web lesson](https://introgm.github.io/lessons/fd_heat_conduction.html#spatially-varying-physical-parameters) |           |
+| 4.2       | Finite difference method, part II   | [Web lesson](https://introgm.github.io/lessons/fd_part2.html) |           |
+| 4.3       | Heat transfer in 1D (cond. + adv.)  | [Web lesson](https://introgm.github.io/lessons/full_heat.html) |           |
+| 4.4       | Marker-in-cell technique            |               | [PDF](https://introgm.github.io/slides/marker-in-cell-technique/Marker-in-cell-technique.pdf) |
 |-----------+-------------------------------------+---------------+-----------|
 | **Day 5** |                                     |               |           |
 |-----------|-------------------------------------|:-------------:|:---------:|
