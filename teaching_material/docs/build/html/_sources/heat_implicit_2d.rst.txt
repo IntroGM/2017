@@ -14,16 +14,33 @@ equation.
 
 .. topic:: Exercise
 
-   Discretize equation :eq:`heat-diff2d`. Use the implicit
-   discretization, i.e. calculate temperature for time step :math:`i` using
-   temperature values from time step :math:`i` on the right hand
-   side.
+   1. Discretize equation :eq:`heat-diff2d`. Use the implicit
+      discretization, i.e. calculate temperature for time step :math:`i` using
+      temperature values from time step :math:`i` on the right hand
+      side.
 
-   - How many indices do you need?
-   - How many boundary conditions do you need?
-   - Draw a stencil to illustrate the spatial grid
+      - How many indices do you need?
+      - How many boundary conditions do you need?
+      - Draw a stencil to illustrate the spatial grid
 
+   2. Reorganize the equation so that on the left hand side 
+      you have all the :math:`T^i` values and on the right hand side
+      you have all the known temperature values (:math:`T^{i-1}`).
 
+      - Further reorganize the equation so that the left
+        hand side is a sum of :math:`T^i` values multiplied
+        by some constant coefficients, i.e.
+
+         .. math::
+
+            a T_{n-1,k}^i + b T_{n,k-1}^i + c T_{n+1,k}^i + ... =
+            \mathrm{something with T^{i-1}
+
+.........
+=========
+
+The 2D heat equation can be discretized with forward difference in time
+and central difference in space (like before):
 
 .. math::
 

@@ -54,7 +54,8 @@ derivative with respect to <span class="math">\(y\)</span> on the right hand sid
 equation.</p>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Discretize equation <a class="reference internal" href="#equation-heat-diff2d">(1)</a>. Use the implicit
+<ol class="arabic">
+<li><p class="first">Discretize equation <a class="reference internal" href="#equation-heat-diff2d">(1)</a>. Use the implicit
 discretization, i.e. calculate temperature for time step <span class="math">\(i\)</span> using
 temperature values from time step <span class="math">\(i\)</span> on the right hand
 side.</p>
@@ -63,7 +64,26 @@ side.</p>
 <li>How many boundary conditions do you need?</li>
 <li>Draw a stencil to illustrate the spatial grid</li>
 </ul>
+</li>
+<li><p class="first">Reorganize the equation so that on the left hand side
+you have all the <span class="math">\(T^i\)</span> values and on the right hand side
+you have all the known temperature values (<span class="math">\(T^{i-1}\)</span>).</p>
+<ul>
+<li><p class="first">Further reorganize the equation so that the left
+hand side is a sum of <span class="math">\(T^i\)</span> values multiplied
+by some constant coefficients, i.e.</p>
+<blockquote>
+<div><div class="math">
+\[a T_{n-1,k}^i + b T_{n,k-1}^i + c T_{n+1,k}^i + ... =
+\mathrm{something with T^{i-1}\]</div>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ol>
 </div>
+<p>The 2D heat equation can be discretized with forward difference in time
+and central difference in space (like before):</p>
 <div class="math">
 \[\rho Cp \frac{T_{n,k}^i - T_{n,k}^{i-1}}{\Delta t} =
 \alpha \left(
