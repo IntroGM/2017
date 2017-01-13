@@ -32,7 +32,9 @@ If you prefer, you are welcome to use the [Table of Contents for the web lessons
 |-----------+-------------------------------------+---------------+-----------|
 | **Day 5** |                                     |               |           |
 |-----------|-------------------------------------|:-------------:|:---------:|
-|           |                                     |               |           |
+| 5.1       | Stokes flow in 2D                   | [Web lesson](https://introgm.github.io/lessons/2dstokes.html) |           |
+| 5.2       | Putting it all together             | [Web lesson](https://introgm.github.io/lessons/putting-it-together.html) |           |
+| 5.3       | Project description                 | [Web presentation](https://introgm.github.io/slides/project-overview/) | [PDF](https://introgm.github.io/slides/project-overview/project-overview.pdf) |
 |-----------+-------------------------------------+---------------+-----------|
 
 Resources
