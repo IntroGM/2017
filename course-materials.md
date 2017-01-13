@@ -39,7 +39,7 @@ If you prefer, you are welcome to use the [Table of Contents for the web lessons
 
 Resources
 =========
-- **Course materials**
+- **Course-related**
   - The scripts and script templates referred to in the teaching material can be found in the [GitHub scripts directory](https://github.com/IntroGM/introgm.github.io/tree/master/teaching_material/docs/source/scripts)
   - [Random notes and snippets collected during the lessons](https://hackmd.io/JwZgrAZgphCMUFpgAYBsAjBAWWYsPXQwRGAGMssoyBDAdjoCZGg=#)
 - **Web resources**
