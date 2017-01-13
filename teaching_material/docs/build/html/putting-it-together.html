@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Putting it together &#8212; IntroGM 17.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '17.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="putting-it-together">
+<h1>Putting it together<a class="headerlink" href="#putting-it-together" title="Permalink to this headline">¶</a></h1>
+<p>In the past four days we have been introduced to a number of topics related to geodynamic modelling:</p>
+<ul class="simple">
+<li>Physical processes</li>
+<li>Solving equations</li>
+<li>Programming concepts in Python/NumPy</li>
+<li>Numerical methods</li>
+<li>Benchmarking numerical solutions</li>
+</ul>
+<p>Now we turn to how these different topics are related to one another in our design of a 2D thermomechanical numerical geodynamic model.
+As we will see, there are a number of different factors we must consider in the model design, and the order in which we perform various actions is important.</p>
+<div class="section" id="processes-to-consider">
+<h2>Processes to consider<a class="headerlink" href="#processes-to-consider" title="Permalink to this headline">¶</a></h2>
+<p>First off, what kinds of processes do we need to consider in our 2D geodynamic numerical modelling code?</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Heat transfer in 2D</dt>
+<dd><ul class="first last">
+<li><p class="first">Conduction</p>
+</li>
+<li><p class="first">Production</p>
+</li>
+<li><p class="first">Advection</p>
+</li>
+<li><dl class="first docutils">
+<dt>Material thermal properties</dt>
+<dd><ul class="first last simple">
+<li>Thermal conductivity</li>
+<li>Concentration of heat-producing elements</li>
+<li>Heat capacity</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Stokes flow</dt>
+<dd><ul class="first last">
+<li><p class="first">Momentum and continuity equations</p>
+</li>
+<li><dl class="first docutils">
+<dt>Material mechanical properties</dt>
+<dd><ul class="first last simple">
+<li>Viscosity</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Material advection (related to of Stokes flow)</p>
+</li>
+</ul>
+</div>
+<div class="section" id="interactions-between-processes-materials">
+<h2>Interactions between processes/materials<a class="headerlink" href="#interactions-between-processes-materials" title="Permalink to this headline">¶</a></h2>
+<p>How might various processes we consider above interact with one another?
+This is an important consideration because we need to know in which order we should handle the different processes.
+In the Earth, materials move and transfer heat simultaneously, but in our model we will solve the Stokes flow and heat transfer equations separately.</p>
+<ul class="simple">
+<li>Stokes flow solution will affect advection in heat transfer code</li>
+<li>Temperature will affect viscosity of model materials</li>
+<li>Velocities from Stokes flow will influence size of time step for material advection</li>
+</ul>
+</div>
+<div class="section" id="structure-of-a-2d-thermomechanical-code">
+<h2>Structure of a 2D thermomechanical code<a class="headerlink" href="#structure-of-a-2d-thermomechanical-code" title="Permalink to this headline">¶</a></h2>
+<p>With the list of processes and their interactions given above, how should we design our numerical modelling code?
+In what order should we do the different steps?</p>
+<div class="figure">
+<img alt="_images/2D-flow-chart-Gerya.png" src="_images/2D-flow-chart-Gerya.png" />
+</div>
+<p><strong>Figure 1</strong>. An example of a flow chart for the steps needed to simulate geodynamic processes in 2D.</p>
+<p>Above we see an example of the order in which various processes and numerical procedures should be executed.
+Notably, we calculate the velocities for Stokes flow first, temperature after that (using the Stokes flow velocities), and move the markers after the new temperature values have been interpolated onto them.
+Note that in our code we will not perform step 4 above.</p>
+</div>
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<p>Given the various physical processes we have discussed earlier in the course, and the model design described above, what are the potential limitations of our 2D model?</p>
+<ul class="simple">
+<li>2D, so no three-dimensional deformation</li>
+<li>No plasticity, no elasticity</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Putting it together</a><ul>
+<li><a class="reference internal" href="#processes-to-consider">Processes to consider</a></li>
+<li><a class="reference internal" href="#interactions-between-processes-materials">Interactions between processes/materials</a></li>
+<li><a class="reference internal" href="#structure-of-a-2d-thermomechanical-code">Structure of a 2D thermomechanical code</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/putting-it-together.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Lars Kaislaniemi and David Whipp.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/putting-it-together.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
