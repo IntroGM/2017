@@ -17,8 +17,7 @@
         VERSION:     '17.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -27,6 +26,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
     <link rel="next" title="Advection" href="advection.html" />
     <link rel="prev" title="Finite differences formulation of the heat conduction problem" href="fd_heat_conduction.html" />
    
@@ -55,11 +55,11 @@ This process will be the focus of this lesson.</p>
 <p>We have focussed thus far on using the finite difference method to approximate solutions to equations that we cannot directly integrate.
 As we have seen, the definition of a derivative is</p>
 <div class="math" id="equation-testing_derivative">
-<span class="eqno">(1)<a class="headerlink" href="#equation-testing_derivative" title="Permalink to this equation">¶</a></span>\[\frac{\mathrm{d}f}{\mathrm{d}x}\rvert_{x=x_0} = \lim_{\Delta x \rightarrow 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} ,\]</div>
+<span class="eqno">(1)</span>\[\frac{\mathrm{d}f}{\mathrm{d}x}\rvert_{x=x_0} = \lim_{\Delta x \rightarrow 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} ,\]</div>
 <p>which we can approximate in a number of forms by removing the limit <span class="math">\(\Delta x \rightarrow 0\)</span>.
 For example, we have seen that for forward differences we can state</p>
 <div class="math" id="equation-testing_fd">
-<span class="eqno">(2)<a class="headerlink" href="#equation-testing_fd" title="Permalink to this equation">¶</a></span>\[\frac{\mathrm{d}f}{\mathrm{d}x}\rvert_{x=x_0} \approx \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} .\]</div>
+<span class="eqno">(2)</span>\[\frac{\mathrm{d}f}{\mathrm{d}x}\rvert_{x=x_0} \approx \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} .\]</div>
 <p>And again, as long as <span class="math">\(\Delta x\)</span> is &#8220;small enough&#8221;, the error that is introduced in this approximation is insignificant.
 So the question is, how do we know when <span class="math">\(\Delta x\)</span> is small enough?
 Before we can answer that question, we need to say a few things about the sources of error in any computer-based calculation and how we can caluclate these errors.</p>
@@ -77,14 +77,14 @@ Before we can answer that question, we need to say a few things about the source
 Simply put, the <strong>error</strong> in a calculation is simply the difference between the calculated value and the actual value.
 In other words,</p>
 <div class="math" id="equation-testing_error">
-<span class="eqno">(3)<a class="headerlink" href="#equation-testing_error" title="Permalink to this equation">¶</a></span>\[E = \bar{x} - x\]</div>
+<span class="eqno">(3)</span>\[E = \bar{x} - x\]</div>
 <p>where <span class="math">\(E\)</span> is the error in the calculated value <span class="math">\(x\)</span> compared to its true value <span class="math">\(\bar{x}\)</span>.
 Another common way in which error is represented is as <strong>relative error</strong> <span class="math">\((RE)\)</span>, which is simply the error divided by the true value,</p>
 <div class="math" id="equation-testing_rerror">
-<span class="eqno">(4)<a class="headerlink" href="#equation-testing_rerror" title="Permalink to this equation">¶</a></span>\[RE = \frac{E}{\bar{x}}\]</div>
+<span class="eqno">(4)</span>\[RE = \frac{E}{\bar{x}}\]</div>
 <p>For our purposes we will mainly consider the <strong>percent error</strong> <span class="math">\((PE)\)</span>, which is just the relative error multiplied by 100 <a class="footnote-reference" href="#testing-pct" id="id1">[1]</a>,</p>
 <div class="math" id="equation-testing_pcterror">
-<span class="eqno">(5)<a class="headerlink" href="#equation-testing_pcterror" title="Permalink to this equation">¶</a></span>\[PE = 100 RE .\]</div>
+<span class="eqno">(5)</span>\[PE = 100 RE .\]</div>
 </div>
 <div class="section" id="how-do-you-know-when-your-solution-is-correct">
 <h2>How do you know when your solution is &#8220;correct&#8221;?<a class="headerlink" href="#how-do-you-know-when-your-solution-is-correct" title="Permalink to this headline">¶</a></h2>
@@ -170,7 +170,7 @@ For example, it is common to use the calculation of the Courant–Friedrichs–L
 The CFL condition states that the distance material is advected should not exceed the distance between points in the solution grid.
 In mathematical terms, the CFL condition is</p>
 <div class="math" id="equation-testing_cfl">
-<span class="eqno">(6)<a class="headerlink" href="#equation-testing_cfl" title="Permalink to this equation">¶</a></span>\[C = \frac{u \Delta t}{\Delta x} \leq C_{\mathrm{max}}\]</div>
+<span class="eqno">(6)</span>\[C = \frac{u \Delta t}{\Delta x} \leq C_{\mathrm{max}}\]</div>
 <p>where <span class="math">\(u\)</span> is the velocity of advection, <span class="math">\(\Delta t\)</span> is the time step, and <span class="math">\(\Delta x\)</span> is the spatial distance between grid points.
 We expect a stable solution as long as <span class="math">\(C_{\mathrm{max}} \leq 1.0\)</span>.
 In fact, many people use a value of <span class="math">\(C_{\mathrm{max}} \leq 0.5\)</span> to ensure a stable solution.
@@ -190,7 +190,7 @@ If you take the code from the last exercise, you do not need to make any signifi
 <table class="docutils footnote" frame="void" id="testing-pct" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>It is common to use the absolute value of <a class="reference internal" href="#equation-testing_pcterror">(5)</a> for its determination, since that will give the magnitude of the error.
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>It is common to use the absolute value of <a href="#equation-testing_pcterror">(5)</a> for its determination, since that will give the magnitude of the error.
 However, I prefer to use the percent error calculation without the absolute value to be able to see whether the estimate is an underestimate or overestimate of the true value.</td></tr>
 </tbody>
 </table>
@@ -225,7 +225,7 @@ However, I prefer to use the percent error calculation without the absolute valu
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/testing-your-code.rst.txt"
+      <li><a href="_sources/testing-your-code.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -247,11 +247,11 @@ However, I prefer to use the percent error calculation without the absolute valu
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/testing-your-code.rst.txt"
+      <a href="_sources/testing-your-code.txt"
           rel="nofollow">Page source</a>
     </div>
 

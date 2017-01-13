@@ -17,8 +17,7 @@
         VERSION:     '17.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -27,6 +26,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
     <link rel="next" title="Heat conduction in 2D" href="heat_implicit_2d.html" />
     <link rel="prev" title="Finite difference method, part II" href="fd_part2.html" />
    
@@ -55,10 +55,10 @@ heat transfer equation where we consider</p>
 <li>variable physical paramaters.</li>
 </ul>
 <div class="math" id="equation-heat-diff-adv-gen">
-<span class="eqno">(1)<a class="headerlink" href="#equation-heat-diff-adv-gen" title="Permalink to this equation">¶</a></span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H\]</div>
+<span class="eqno">(1)</span>\[\rho(x) C_p(x) \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} \right) = \frac{\partial}{\partial x} \left( \alpha(x) \frac{\partial T}{\partial x} \right) + H\]</div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Discretize equation <a class="reference internal" href="#equation-heat-diff-adv-gen">(1)</a>.</p>
+<p>Discretize equation <a href="#equation-heat-diff-adv-gen">(1)</a>.</p>
 <p>Again, use forward difference in time and central difference in space
 for the diffusion term. For the advection term, however, you can
 try using either forward, backward or even central difference. This
@@ -126,7 +126,7 @@ equation</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/full_heat.rst.txt"
+      <li><a href="_sources/full_heat.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -148,11 +148,11 @@ equation</p>
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/full_heat.rst.txt"
+      <a href="_sources/full_heat.txt"
           rel="nofollow">Page source</a>
     </div>
 
