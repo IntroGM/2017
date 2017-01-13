@@ -39,10 +39,15 @@ If you prefer, you are welcome to use the [Table of Contents for the web lessons
 
 Resources
 =========
-- The scripts and script templates referred to in the teaching material can be found in the [GitHub scripts directory](https://github.com/IntroGM/introgm.github.io/tree/master/teaching_material/docs/source/scripts)
-- [Random notes and snippets collected during the lessons](https://hackmd.io/JwZgrAZgphCMUFpgAYBsAjBAWWYsPXQwRGAGMssoyBDAdjoCZGg=#)
-- [Short NumPy tutorial](https://engineering.ucsb.edu/~shell/che210d/numpy.pdf)
-- [Wolfram Alpha](https://www.wolframalpha.com/examples/Math.html) has a simple calculator, plotting, equation solver, etc.
+- **Course materials**
+  - The scripts and script templates referred to in the teaching material can be found in the [GitHub scripts directory](https://github.com/IntroGM/introgm.github.io/tree/master/teaching_material/docs/source/scripts)
+  - [Random notes and snippets collected during the lessons](https://hackmd.io/JwZgrAZgphCMUFpgAYBsAjBAWWYsPXQwRGAGMssoyBDAdjoCZGg=#)
+- **Web resources**
+  - [Short NumPy tutorial](https://engineering.ucsb.edu/~shell/che210d/numpy.pdf)
+  - [Wolfram Alpha](https://www.wolframalpha.com/examples/Math.html) has a simple calculator, plotting, equation solver, etc.
+- **Books**
+  - [Introduction to Geodynamic Numerical Modelling](http://www.cambridge.org/catalogue/catalogue.asp?isbn=9780521887540) by T. Gerya
+  - [Computational Methods for Geodynamics](https://www.cambridge.org/core/books/computational-methods-for-geodynamics/D5F735F7A1549CA11A14C3AF9D6428DA) by A. Ismail-Zadeh and P. Tackley
 
 References
 ==========
