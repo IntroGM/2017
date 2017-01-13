@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Stokes and continuity equations in 2D &mdash; IntroGM 17.1 documentation</title>
+    <title>Stokes and continuity equations in 2D &#8212; IntroGM 17.1 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,20 +17,25 @@
         VERSION:     '17.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="IntroGM 17.1 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
    
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">  
+  <body role="document">
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -48,27 +53,27 @@ i.e. the Stokes equation, is</p>
 \[\frac{\partial \sigma'_{ij}}{\partial x_j} - \frac{\partial P}{\partial x_i} = -\rho g_i\]</div>
 <p>In 2D, this gives us two equations,</p>
 <div class="math" id="equation-2d-stokes">
-<span class="eqno">(1)</span>\[\begin{split}\begin{align}
+<span class="eqno">(1)<a class="headerlink" href="#equation-2d-stokes" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{align}
 \frac{\partial \sigma'_{xx}}{\partial x} + \frac{\partial \sigma'_{xz}}{\partial z} - \frac{\partial P}{\partial x} &amp; = -\rho g_x \\
 \frac{\partial \sigma'_{zz}}{\partial z} + \frac{\partial \sigma'_{zx}}{\partial x} - \frac{\partial P}{\partial z} &amp; = -\rho g_z
 \end{align}\end{split}\]</div>
 <p>In the case of <em>incompressible fluid</em> a rheological law relates the deviatoric stress to
 strain rate:</p>
 <div class="math" id="equation-newtonian-rheol">
-<span class="eqno">(2)</span>\[\sigma'_{ij} = 2\eta\dot\epsilon_{ij}\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-newtonian-rheol" title="Permalink to this equation">¶</a></span>\[\sigma'_{ij} = 2\eta\dot\epsilon_{ij}\]</div>
 <p>This is called the <em>Newtonian</em> viscous rheology, where the deviatoric stress
 is linearly dependent on the strain rate. <em>Non-Newtonian</em> rheologies,
 on the other hand, relate these with an exponent
 <span class="math">\((\sigma'_{ij})^n = 2\eta\dot\epsilon_{ij}\)</span>.</p>
 <p>The strain rate is defined as</p>
 <div class="math" id="equation-strain-rate">
-<span class="eqno">(3)</span>\[\dot\epsilon_{ij} = \frac{1}{2}\left( \frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} \right)\]</div>
-<p>Applying <a href="#equation-strain-rate">(3)</a> in <a href="#equation-newtonian-rheol">(2)</a> gives</p>
+<span class="eqno">(3)<a class="headerlink" href="#equation-strain-rate" title="Permalink to this equation">¶</a></span>\[\dot\epsilon_{ij} = \frac{1}{2}\left( \frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} \right)\]</div>
+<p>Applying <a class="reference internal" href="#equation-strain-rate">(3)</a> in <a class="reference internal" href="#equation-newtonian-rheol">(2)</a> gives</p>
 <div class="math">
 \[\sigma'_{ij} = \eta\left( \frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} \right)\]</div>
-<p>which can be plugged in the Stokes equations <a href="#equation-2d-stokes">(1)</a> to get</p>
+<p>which can be plugged in the Stokes equations <a class="reference internal" href="#equation-2d-stokes">(1)</a> to get</p>
 <div class="math" id="equation-2d-stokes-open">
-<span class="eqno">(4)</span>\[\begin{split}\begin{align}
+<span class="eqno">(4)<a class="headerlink" href="#equation-2d-stokes-open" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{align}
 \frac{\partial}{\partial x} \left( \eta\left( \frac{\partial v_x}{\partial x} + \frac{\partial v_x}{\partial x} \right) \right) +
 \frac{\partial}{\partial z} \left( \eta\left( \frac{\partial v_x}{\partial z} + \frac{\partial v_z}{\partial x} \right) \right) -
 \frac{\partial P}{\partial x} &amp; = -\rho g_x \\
@@ -78,7 +83,7 @@ on the other hand, relate these with an exponent
 \end{align}\end{split}\]</div>
 <p>If viscosity is constant in respect to <span class="math">\(x\)</span> and <span class="math">\(z\)</span>, this simplifies to</p>
 <div class="math" id="equation-stokes-const-eta">
-<span class="eqno">(5)</span>\[\begin{split}\begin{align}
+<span class="eqno">(5)<a class="headerlink" href="#equation-stokes-const-eta" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{align}
 \eta\left( \frac{\partial^2 v_x}{\partial x^2} + \frac{\partial^2 v_x}{\partial z^2} \right) - \frac{\partial P}{\partial x} &amp; = -\rho g_x \\
 \eta\left( \frac{\partial^2 v_z}{\partial z^2} + \frac{\partial^2 v_z}{\partial x^2} \right) - \frac{\partial P}{\partial z} &amp; = -\rho g_z
 \end{align}\end{split}\]</div>
@@ -95,7 +100,7 @@ by</p>
 </div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Discretize equation <a href="#equation-stokes-const-eta">(5)</a>.</p>
+<p>Discretize equation <a class="reference internal" href="#equation-stokes-const-eta">(5)</a>.</p>
 <ul class="simple">
 <li>What are the unknowns in the equation?</li>
 <li>Can you rearrange the equations to solve for
@@ -109,10 +114,10 @@ those unknowns explicitly?</li>
 of material, the incoming flux of new material is balanced by same
 amount of material going out. This applies for incompressible fluids.</p>
 <div class="math" id="equation-continuity">
-<span class="eqno">(6)</span>\[\begin{split}\frac{\partial v_x}{\partial x} + \frac{\partial v_z}{\partial z}&nbsp;= 0\end{split}\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-continuity" title="Permalink to this equation">¶</a></span>\[\frac{\partial v_x}{\partial x} + \frac{\partial v_z}{\partial z}&nbsp;= 0\]</div>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Discretize equation <a href="#equation-continuity">(6)</a>.</p>
+<p>Discretize equation <a class="reference internal" href="#equation-continuity">(6)</a>.</p>
 <ul class="simple">
 <li>What are the unknowns in the equation?</li>
 <li>Can you rearrange the equation to solve for those
@@ -135,8 +140,8 @@ can calculate where the material would advect during the
 next time step.</p>
 <div class="topic">
 <p class="topic-title first">Exercise</p>
-<p>Looking at the two Stokes equations <a href="#equation-stokes-const-eta">(5)</a> and
-the continuity equation <a href="#equation-continuity">(6)</a>, and their discretized
+<p>Looking at the two Stokes equations <a class="reference internal" href="#equation-stokes-const-eta">(5)</a> and
+the continuity equation <a class="reference internal" href="#equation-continuity">(6)</a>, and their discretized
 versions,</p>
 <ul class="simple">
 <li>how many boundary conditions do you need to solve them?</li>
@@ -201,21 +206,18 @@ across the boundary.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/2dstokes.txt"
+      <li><a href="_sources/2dstokes.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -226,11 +228,11 @@ across the boundary.</p>
       &copy;2016, Lars Kaislaniemi and David Whipp.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="_sources/2dstokes.txt"
+      <a href="_sources/2dstokes.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
