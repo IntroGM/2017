@@ -22,6 +22,7 @@ Introduction to lithospheric geodynamic modelling
    full_heat
    heat_implicit_2d
    2dstokes.rst
+   putting-it-together
 
 Resources
 ^^^^^^^^^
