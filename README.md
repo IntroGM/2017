@@ -20,6 +20,12 @@ At the end of this course, students will be able to:
 - Differentiate between and implement various boundary and initial conditions in numerical geodynamic models
 - Create their own 1D and understand how to use simple 2D numerical geodynamic models that include heat transfer and viscous flow
 
+# Course completion methods
+
+- Computer programming exercises
+- Attendance of at least 80% of course lectures/exercises
+- Optional research project paper
+
 # Suggested background studies
 Students taking this course should have
 
