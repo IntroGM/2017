@@ -51,7 +51,7 @@ Resources
 
 License
 =======
-Except where otherwise noted, content on this site ([introgm.github.io](introgm.github.io)) is licensed under an [MIT license](LICENSE).
+Except where otherwise noted, content on this site ([introgm.github.io](https://introgm.github.io)) is licensed under an [MIT license](LICENSE).
 
 References
 ==========
