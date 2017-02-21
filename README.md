@@ -14,11 +14,11 @@ The [Helsinki University Geodynamics Group](http://wiki.helsinki.fi/display/HUGG
 - Develop a background understanding of geodynamics that allows you to properly understand the behavior of geodynamic numerical models
 
 # Learning objectives
-At the end of this course, students should be able to:
+At the end of this course, students will be able to:
 
 - Solve partial differential equations using the finite-difference method
-- Differentiate between and implement various boundary and initial conditions in numerical models
-- Create their own simple 2D numerical geodynamic model including heat transfer and viscous flow
+- Differentiate between and implement various boundary and initial conditions in numerical geodynamic models
+- Create their own 1D and understand how to use simple 2D numerical geodynamic models that include heat transfer and viscous flow
 
 # Suggested background studies
 Students taking this course should have
