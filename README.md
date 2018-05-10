@@ -5,7 +5,7 @@ The [Helsinki University Geodynamics Group](http://wiki.helsinki.fi/display/HUGG
 # Course materials
 
 - [Course schedule](https://introgm.github.io/slides/course-overview/#/5)
-- [Slides, lesson materials, and exercises](https://introgm.github.io/course-materials)
+- [Slides, lesson materials, and exercises](course-materials)
 
 # Course goals
 
